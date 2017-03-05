@@ -1,0 +1,21 @@
+{
+  "name": "308lab1",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Seth"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/scripts/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

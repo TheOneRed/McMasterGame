@@ -1,0 +1,46 @@
+{
+  "name": "Game",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=3.5.0"
+  },
+  "dependencies": {
+    "body-parser": "~1.16.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.0",
+    "ejs": "~2.5.5",
+    "express": "~4.14.1",
+    "express-session": "^1.15.1",
+    "mongoose": "^4.8.4",
+    "morgan": "~1.7.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0",
+    "serve-favicon": "~2.3.2"
+  },
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "author",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "description": "",
+  "devDependencies": {
+    "@types/connect-flash": "0.0.31",
+    "@types/express-session": "0.0.32",
+    "@types/passport": "^0.3.3",
+    "@types/passport-local": "^1.0.29",
+    "@types/passport-local-mongoose": "^4.0.8"
+  }
+}
