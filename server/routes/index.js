@@ -21,4 +21,12 @@ router.get('/',requireAuth,  (req, res, next) => {
     username: req.user ? req.user.username : '' });
 });
 
+/* GET leader page. */
+router.get('/leader',requireAuth,  (req, res, next) => {
+  console.log(req.user);
+  res.render('content/leaderboard', { 
+    title: 'Leaderboard',
+    username: req.user ? req.user.username : '' });
+});
+
 module.exports = router;
