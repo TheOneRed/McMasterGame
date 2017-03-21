@@ -2,9 +2,175 @@
         <div class="panel-body">
           <div class="col-md-2"></div>
           <div class="col-md-8">
-            &nbsp&nbsp&nbspLorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id mauris vitae nisi sollicitudin accumsan. Nunc non sem egestas urna cursus porttitor in vitae elit. Praesent id convallis arcu. Vivamus maximus venenatis mollis. Morbi elementum magna a interdum aliquam. Integer nec sollicitudin est, et efficitur lectus. Nam porta gravida cursus.
+            
+            <h4>Available Stakeholders</h4>
 
-            Sed posuere leo quis velit pulvinar tincidunt. Aliquam nec neque ac turpis ultricies consectetur. Praesent sollicitudin turpis et felis dapibus ultricies. Suspendisse viverra, leo eget aliquam volutpat, nisi augue feugiat lectus, in malesuada purus nisl et risus. Aenean sit amet eleifend nisl, sed cursus quam. Fusce vehicula felis ligula. Quisque posuere lectus pellentesque tincidunt volutpat. Aenean sed lectus nunc. Nulla ultrices congue facilisis. Duis sit amet nunc ultricies tortor imperdiet tristique non venenatis diam.
-          </div>
-        </div>
+<!-- Stakeholder box Start -->
+<form>
+  <div class="well carousel-search hidden-phone">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a Stakeholder <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Patients</a></li>
+        <li><a href="#">Vendors</a></li>
+        <li><a href="#">Providers</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Other</a></li>
+      </ul>
+      <span id="spanTest" style="display: none">
+      <button type="button" id="btnTest" class="btn btn-primary">TEST</button>
+      </span>
+  </div>
+  </div>
+</form>
+<!-- Stakeholder box End -->
+          
+
+<!-- PATIENT BADGES Start -->
+<form style="display:none" id="patientBadgeForm">
+  <h4>Select A Badge</h4>
+  <div class="well carousel-search hidden-phone">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a Patient BADGE <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Empowerment</a></li>
+        <li><a href="#">Safety</a></li>
+        <li><a href="#">Journey</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Other</a></li>
+      </ul>
+      <button type="button" id="btnTest" class="btn btn-primary">Start Patient Badge</button>
+
+  </div>
+  </div>
+</form>
+<!-- PATIENT BADGES End -->
+
+<!-- VENDOR BADGES Start -->
+<form style="display:none" id="vendorBadgeForm">
+  <h4>Select A Badge</h4>
+  <div class="well carousel-search hidden-phone">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a Vendor BADGE <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">User Interface</a></li>
+        <li><a href="#">Mobile</a></li>
+        <li><a href="#">Applications</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Other</a></li>
+      </ul>
+      <button type="button" id="btnTest" class="btn btn-primary">Start Vendor Badge</button>
+
+  </div>
+  </div>
+</form>
+<!-- VENDOR BADGES End -->
+
+<!-- PROVIDERS BADGES Start -->
+<form style="display:none" id="providersBadgeForm">
+  <h4>Select A Badge</h4>
+  <div class="well carousel-search hidden-phone">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a provider BADGE <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Team Based Care</a></li>
+        <li><a href="#">Clinical Workflow</a></li>
+        <li><a href="#">Models of Care</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Other</a></li>
+      </ul>
+      <button type="button" id="btnTest" class="btn btn-primary">Start provider Badge</button>
+
+  </div>
+  </div>
+</form>
+<!-- PROVIDERS BADGES End -->
+
+
+</div>
+</div>
+
+<script>
+ $(".dropdown-menu li a").click(function(){
+  var selText = $(this).text();
+  $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+  //badge element visible
+  if(selText == "Patients")
+  {
+      var y = document.getElementById('vendorBadgeForm');
+      y.style.display = 'none';
+
+      var z = document.getElementById('providersBadgeForm');
+      z.style.display = 'none';
+
+  var x = document.getElementById('patientBadgeForm');
+    if (x.style.display === 'none') {
+        x.style.display = 'inline';
+    } else {
+        x.style.display = 'inline';
+    }
+  }
+
+  //HANDLE VENDOR FORM
+  if (selText == "Vendors")
+  {
+     var x = document.getElementById('patientBadgeForm');
+      x.style.display = 'none';
+
+      var z = document.getElementById('providersBadgeForm');
+      z.style.display = 'none';
+
+      var y = document.getElementById('vendorBadgeForm');
+    if (y.style.display === 'none') {
+        y.style.display = 'inline';
+    } else {
+        y.style.display = 'inline';
+    }
+  }
+
+  //HANDLE PROVIDERS FORM
+  if (selText == "Providers")
+  {
+     var x = document.getElementById('patientBadgeForm');
+      x.style.display = 'none';
+
+      var z = document.getElementById('vendorBadgeForm');
+      z.style.display = 'none';
+
+      var y = document.getElementById('providersBadgeForm');
+    if (y.style.display === 'none') {
+        y.style.display = 'inline';
+    } else {
+        y.style.display = 'inline';
+    }
+  }
+});
+
+
+</script>
+
 <% include ../partials/footer.ejs %> 
+
+<!-- 
+navbar
+Title
+Mindmap  //Some way to show where they are at???
+coresel selection
+
+//BADGE VIEW
+badges listed //shows badges done???
+- dropbox shareholder
+  - dropbox badges
+  - button for badge selection
+
+//USER BADGES IN PROGRESS VIEW
+- shows badges that the user is working on
+- can select badge in progress and submit assignment for that badge
+
+
+//PROFESSOR VIEW
+- search for student
+- student shows badges in progress and completed
+- retreieve assignments?????
+
+  -->
