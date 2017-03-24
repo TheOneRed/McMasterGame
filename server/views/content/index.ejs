@@ -92,18 +92,18 @@
 
 <script>
  $(".dropdown-menu li a").click(function(){
-  var selText = $(this).text();
+  let selText = $(this).text();
   $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
   //badge element visible
   if(selText == "Patients")
   {
-      var y = document.getElementById('vendorBadgeForm');
+      let y = document.getElementById('vendorBadgeForm');
       y.style.display = 'none';
 
-      var z = document.getElementById('providersBadgeForm');
+      let z = document.getElementById('providersBadgeForm');
       z.style.display = 'none';
 
-  var x = document.getElementById('patientBadgeForm');
+  let x = document.getElementById('patientBadgeForm');
     if (x.style.display === 'none') {
         x.style.display = 'inline';
     } else {
@@ -114,13 +114,13 @@
   //HANDLE VENDOR FORM
   if (selText == "Vendors")
   {
-     var x = document.getElementById('patientBadgeForm');
+     let x = document.getElementById('patientBadgeForm');
       x.style.display = 'none';
 
-      var z = document.getElementById('providersBadgeForm');
+      let z = document.getElementById('providersBadgeForm');
       z.style.display = 'none';
 
-      var y = document.getElementById('vendorBadgeForm');
+      let y = document.getElementById('vendorBadgeForm');
     if (y.style.display === 'none') {
         y.style.display = 'inline';
     } else {
@@ -131,13 +131,13 @@
   //HANDLE PROVIDERS FORM
   if (selText == "Providers")
   {
-     var x = document.getElementById('patientBadgeForm');
+     let x = document.getElementById('patientBadgeForm');
       x.style.display = 'none';
 
-      var z = document.getElementById('vendorBadgeForm');
+      let z = document.getElementById('vendorBadgeForm');
       z.style.display = 'none';
 
-      var y = document.getElementById('providersBadgeForm');
+      let y = document.getElementById('providersBadgeForm');
     if (y.style.display === 'none') {
         y.style.display = 'inline';
     } else {

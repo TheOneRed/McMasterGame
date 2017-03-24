@@ -3,7 +3,8 @@ let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
 let BadgeSchema = new Schema({
-    name: string
+    name: String,
+    picName: String
 }, {
     collection: "badges"
 });

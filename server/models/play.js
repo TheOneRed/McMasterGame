@@ -3,11 +3,11 @@ let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
 let PlaySchema = new Schema({
-    username: string,
-    questName: string,
-    result: string,
-    assignedBadge: string,
-    assignedStakeholder: string
+    username: String,
+    questName: String,
+    result: String,
+    assignedBadge: String,
+    assignedStakeholder: String
 }, {
     collection: "plays"
 });

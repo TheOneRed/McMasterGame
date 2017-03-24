@@ -3,9 +3,12 @@ let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
 let StakeholderSchema = new Schema({
-    name: string,
+    name: {
+        type: String,
+        required: "Stakeholder's name is required"
+    },
     badges: [{
-        badgeName: string
+        badge_id: Number
     }],
     
 }, {

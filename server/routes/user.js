@@ -49,9 +49,7 @@ router.post('/register', (req, res, next) => {
   User.register(
     new User({
         username: req.body.username,
-        //password: req.body.password,
         email: req.body.email,
-        username: req.body.username
       }),
       req.body.password,
       (err) => {

@@ -4,15 +4,15 @@ let Schema = mongoose.Schema;
 
 let QuestSchema = new Schema({
     potentialBadges: [{
-        badgeName: string
+        badgeName: String
     }],
-    name: string,
+    name: String,
     questions: [{
-        question: string,
+        question: String,
         answers: [{
-            answer: string
+            answer: String
         }],
-        correctAnswer: string
+        correctAnswer: String
     }]
 }, {
     collection: "quests"
