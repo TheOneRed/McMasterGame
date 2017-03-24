@@ -29,4 +29,12 @@ router.get('/leader',requireAuth,  (req, res, next) => {
     username: req.user ? req.user.username : '' });
 });
 
+/* GET badge page. */
+router.get('/badge',requireAuth,  (req, res, next) => {
+  console.log(req.user);
+  res.render('content/badge', { 
+    title: 'Badge',
+    username: req.user ? req.user.username : '' });
+});
+
 module.exports = router;

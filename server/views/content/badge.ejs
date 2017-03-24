@@ -1,0 +1,43 @@
+<% include ../partials/header.ejs %>
+        <div class="panel-body">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+                <h2><%= title %></h2>
+                <p>[Insert Badge Name here]</p>
+                <!--Progress Bar-->
+        <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar" style="width: 40%;">
+                        40% Complete
+            </div>
+        <div class="progress-bar progress-bar-warning" style="width: 20%">
+                        20% In Progress
+                </div>
+                </div>
+            <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+              <thead>
+                <tr>
+                  <th class="text-center">Task</th>
+                  <th class="text-center">Task Title</th>
+                  <th class="text-center">Progress</th>
+                  <th class="text-center"></th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="text-center"><font color = "red">INCOMPLETE</font></td>
+                    <td class="text-center"><button type="button" class="btn btn-info">Submit</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="text-center"><font color = "green">COMPLETED</font></td>
+                    <td class="text-center"><button type="button" class="btn btn-info">Submit</button></td>
+                </tr>
+                </thead>               
+            </table> 
+          </div>
+          </div>
+        </div>
+        <% include ../partials/footer.ejs %> 
+        </div>
