@@ -37,4 +37,12 @@ router.get('/badge',requireAuth,  (req, res, next) => {
     username: req.user ? req.user.username : '' });
 });
 
+/* GET profile page. */
+router.get('/profile',requireAuth,  (req, res, next) => {
+  console.log(req.user);
+  res.render('content/profile', { 
+    title: 'Profile',
+    username: req.user ? req.user.username : '' });
+});
+
 module.exports = router;

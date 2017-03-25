@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/scripts/lib/bootstrap/dist/css/bootstrap-theme.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/Scripts/lib/font-awesome/css/font-awesome.min.css">
     <link rel='stylesheet' href="/content/style.css">
 </head>
 <body>
@@ -21,10 +22,16 @@
                 <ul class="nav navbar-nav">
                     <li 
                         <% if(title == "Home") { %> class="active" <% } %>
-                    ><a href="/">Home</a></li>
+                    ><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
+                    <li 
+                        <% if(title == "Profile") { %> class="active" <% } %>
+                    ><a href="/profile"><i class="fa fa-user-circle fa-lg"></i> Profile</a></li>
+                     <li 
+                        <% if(title == "Badge") { %> class="active" <% } %>
+                    ><a href="/badge"><i class="fa fa-get-pocket fa-lg"></i> Badge</a></li>
                     <li 
                         <% if(title == "Leaderboard") { %> class="active" <% } %>
-                    ><a href="/leader">Leaderboard</a></li>
+                    ><a href="/leader"><i class="fa fa-users fa-lg"></i> Leaderboard</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">    
                     <% if(username) { %>

@@ -1,0 +1,180 @@
+<% include ../partials/header.ejs %>
+        <div class="panel-body">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            
+            <h4>Earned Badges</h4>
+
+<!-- Stakeholder box Start -->
+<form>
+  <div class="well carousel-search hidden-phone">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a Stakeholder <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Guideline Implementors</a></li>
+        <li><a href="#">Organizations</a></li>
+        <li><a href="#">Patients</a></li>
+        <li><a href="#">Providers</a></li>
+        <li><a href="#">Researchers & Academics</a></li>
+        <li><a href="#">System Managers</a></li>
+        <li><a href="#">Vendors</a></li>
+      </ul>
+      <span id="spanTest" style="display: none">
+      <button type="button" id="btnTest" class="btn btn-primary">TEST</button>
+      </span>
+  </div>
+  </div>
+</form>
+<!-- Stakeholder box End -->
+          
+
+<!-- PATIENT BADGES Start -->
+<form style="display:none" id="patientBadgeForm">
+  <div class="well carousel-search hidden-phone">
+    <p>patient</p>
+    <p>(Show all badges connected to the stake holder. Color in badges
+        that user has earned and grey out the badges that they haven't earned')
+    </p>
+  </div>
+</form>
+<!-- PATIENT BADGES End -->
+
+<!-- GUIDELINE IMPLEMENTORS BADGES Start -->
+<form style="display:none" id="guidelineBadgeForm">
+  <div class="well carousel-search hidden-phone">
+    <p>guideline</p>
+    <p>(Show all badges connected to the stake holder. Color in badges
+        that user has earned and grey out the badges that they haven't earned')
+    </p>
+  </div>
+</form>
+<!-- GUIDELINE IMPLEMENTORS BADGES End -->
+
+<!-- ORGANIZATIONS BADGES Start -->
+<form style="display:none" id="organizationsBadgeForm">
+  <div class="well carousel-search hidden-phone">
+    <p>organizations</p>
+    <p>(Show all badges connected to the stake holder. Color in badges
+        that user has earned and grey out the badges that they haven't earned')
+    </p>
+  </div>
+</form>
+<!-- ORGANIZATIONS BADGES End -->
+
+<!-- PROVIDERS BADGES Start -->
+<form style="display:none" id="providersBadgeForm">
+  <div class="well carousel-search hidden-phone">
+    <p>provider</p>
+    <p>(Show all badges connected to the stake holder. Color in badges
+        that user has earned and grey out the badges that they haven't earned')
+    </p>
+  </div>
+</form>
+<!-- PROVIDERS BADGES End -->
+
+<!-- PATIENT BADGES Start -->
+<form style="display:none" id="patientBadgeForm">
+  <div class="well carousel-search hidden-phone">
+    <p>patient</p>
+    <p>(Show all badges connected to the stake holder. Color in badges
+        that user has earned and grey out the badges that they haven't earned')
+    </p>
+  </div>
+</form>
+<!-- PATIENT BADGES End -->
+
+<!-- RESEARCHERS BADGES Start -->
+<form style="display:none" id="researchersBadgeForm">
+  <div class="well carousel-search hidden-phone">
+    <p>researcher</p>
+    <p>(Show all badges connected to the stake holder. Color in badges
+        that user has earned and grey out the badges that they haven't earned')
+    </p>
+  </div>
+</form>
+<!-- RESEARCHERS BADGES End -->
+
+<!-- SYSTEM MANAGERS BADGES Start -->
+<form style="display:none" id="systemBadgeForm">
+  <div class="well carousel-search hidden-phone">
+    <p>system</p>
+    <p>(Show all badges connected to the stake holder. Color in badges
+        that user has earned and grey out the badges that they haven't earned')
+    </p>
+  </div>
+</form>
+<!-- SYSTEM MANAGERS BADGES End -->
+
+<!-- VENDOR BADGES Start -->
+<form style="display:none" id="vendorBadgeForm">
+  <div class="well carousel-search hidden-phone">
+    <p>vendor</p>
+    <p>(Show all badges connected to the stake holder. Color in badges
+        that user has earned and grey out the badges that they haven't earned')
+    </p>
+  </div>
+</form>
+<!-- VENDOR BADGES End -->
+</div>
+</div>
+
+<script>
+ $(".dropdown-menu li a").click(function(){
+  let selText = $(this).text();
+  $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+  //badge element visible
+  if(selText == "Patients")
+  {
+      let y = document.getElementById('vendorBadgeForm');
+      y.style.display = 'none';
+
+      let z = document.getElementById('providersBadgeForm');
+      z.style.display = 'none';
+
+  let x = document.getElementById('patientBadgeForm');
+    if (x.style.display === 'none') {
+        x.style.display = 'inline';
+    } else {
+        x.style.display = 'inline';
+    }
+  }
+
+  //HANDLE VENDOR FORM
+  if (selText == "Vendors")
+  {
+     let x = document.getElementById('patientBadgeForm');
+      x.style.display = 'none';
+
+      let z = document.getElementById('providersBadgeForm');
+      z.style.display = 'none';
+
+      let y = document.getElementById('vendorBadgeForm');
+    if (y.style.display === 'none') {
+        y.style.display = 'inline';
+    } else {
+        y.style.display = 'inline';
+    }
+  }
+
+  //HANDLE PROVIDERS FORM
+  if (selText == "Providers")
+  {
+     let x = document.getElementById('patientBadgeForm');
+      x.style.display = 'none';
+
+      let z = document.getElementById('vendorBadgeForm');
+      z.style.display = 'none';
+
+      let y = document.getElementById('providersBadgeForm');
+    if (y.style.display === 'none') {
+        y.style.display = 'inline';
+    } else {
+        y.style.display = 'inline';
+    }
+  }
+});
+
+
+</script>
+
+<% include ../partials/footer.ejs %> 
