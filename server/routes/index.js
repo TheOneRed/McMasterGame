@@ -70,7 +70,7 @@ router.get('/create',requireAuth,  (req, res, next) => {
     console.error(err);
       res.end(error);
   } else {
-    res.render('content/Create', {
+    res.render('content/create', {
         title: 'Create',
         stakeholders: stakeholders,
         username: req.user ? req.user.username : '' });
