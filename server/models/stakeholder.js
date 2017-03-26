@@ -8,7 +8,7 @@ let StakeholderSchema = new Schema({
         required: "Stakeholder's name is required"
     },
     badges: [{
-        badge_id: Number
+        badge_id: String
     }],
     
 }, {

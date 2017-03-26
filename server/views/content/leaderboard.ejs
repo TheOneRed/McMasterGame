@@ -15,7 +15,19 @@
                   <th class="text-center">Number of Badges</th>
                   <th class="text-center">Score</th>
                 </tr>
-                </thead>               
+                <% for (let count = 0; count < stakeholders.length; count++) { %>
+                  <tr>
+                    <td class="text-center"><%= stakeholders[count].name %></td>
+                    <td class="text-center">
+                      <% for (let bcount = 0; bcount < stakeholders[count].badges.length; bcount++) { %>
+                        <%= stakeholders[count].badges[bcount].badge_id %>
+                      <% } %>
+                    </td>
+                    <td class="text-center">Number of Badges</td>
+                    <td class="text-center">Score</td>
+                  </tr>
+                <% } %>
+              </thead>               
             </table> 
           </div>
            <div class="col-md-offset-1 col-md-10 text-center">

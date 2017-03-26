@@ -17,31 +17,27 @@
 <!-- CHOOSE CREATION End -->
 
 <!-- NEW STAKEHOLDER Start -->
-<form style="display:none" id="newStakeholderForm">
+<form style="display:none" id="newStakeholderForm" method="post" action="/newstakeholder">
   <h4>New Stakeholder</h4>
   <div class="form-group">
-    <input class="form-control" id="stakeholderName">
+    <input class="form-control" id="stakeholderName" name="stakeholderName">
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
 <!-- NEW STAKEHOLDER End -->
 
 <!-- NEW QUEST Start -->
-<form style="display:none" id="newQuestForm">
+<form style="display:none" id="newQuestForm" method="post" action="/newquest">
   <h4>New Quest</h4>
   <div class="form-group">
-    <input class="form-control" id="questName">
+    <input class="form-control" id="questName" name="questName">
   </div>
-  <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-    Select a Stakeholder
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Patients</a></li>
-    <li><a href="#">Vendors</a></li>
-  </ul>
-  </div>
+  <select name="stakeholders" class="form-control">
+    <option value="NULL"> Select a Stakeholder </option>
+    <% for (let count = 0; count < stakeholders.length; count++) { %>
+      <option value="<%= stakeholders[count]._id %>"><%= stakeholders[count].name %></option>
+    <% } %>
+  </select>
   <div class="form-group">
     </br>
     <input type="file" name="badgeImage" accept="image/*">
