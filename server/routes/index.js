@@ -45,4 +45,12 @@ router.get('/profile',requireAuth,  (req, res, next) => {
     username: req.user ? req.user.username : '' });
 });
 
+/* GET create page. */
+router.get('/create',requireAuth,  (req, res, next) => {
+  console.log(req.user);
+  res.render('content/create', { 
+    title: 'Create',
+    username: req.user ? req.user.username : '' });
+});
+
 module.exports = router;
