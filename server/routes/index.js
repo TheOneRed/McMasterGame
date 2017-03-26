@@ -30,14 +30,22 @@ router.get('/',requireAuth,  (req, res, next) => {
 
 /* GET leader page. */
 router.get('/leader',requireAuth,  (req, res, next) => {
-  Stakeholder.find((err, stakeholders) => {
-  if (err) {
-    return console.error(err);
-  } else {
-    res.render('content/leaderboard', {
-        title: 'Leaderboard',
-        stakeholders: stakeholders,
-        username: req.user ? req.user.username : '' });
+  Stakeholder.find((err, fondStakeholders) => {
+    if (err) {
+      console.error(err);
+      res.end(error);
+    } else {
+      Quest.find((err, fondQuest) => {
+        if (err) {
+          console.error(err);
+          res.end(error);
+        } else {
+          res.render('content/leaderboard', {
+            title: 'Leaderboard',
+            stakeholders: fondStakeholders,
+            quest: fondQuest,
+            username: req.user ? req.user.username : '' });
+      }});
   }});
 });
 
@@ -59,7 +67,8 @@ router.get('/profile',requireAuth,  (req, res, next) => {
 router.get('/create',requireAuth,  (req, res, next) => {
   Stakeholder.find((err, stakeholders) => {
   if (err) {
-    return console.error(err);
+    console.error(err);
+      res.end(error);
   } else {
     res.render('content/Create', {
         title: 'Create',
@@ -71,7 +80,8 @@ router.get('/create',requireAuth,  (req, res, next) => {
 /* POST newstakeholder page. */
 router.post('/newstakeholder',requireAuth,  (req, res, next) => {
   let newStakeholder = new Stakeholder({
-    "name": req.body.stakeholderName
+    "name": req.body.stakeholderName,
+    "badges_id": []
   });
 
   Stakeholder.create(newStakeholder, (err) => {
@@ -106,10 +116,10 @@ router.post('/newquest',requireAuth,  (req, res, next) => {
         console.error(err);
         res.end(error);
       } else {
-        stakeholder.badges.push(newQuest._id);
+        stakeholder.badges_ids.push(stakeholders_id);
 
-        for(let i= 0; i < stakeholder.badges.length; i++){
-          console.log("-" + stakeholder.badges[i].badge_id);
+        for(let i= 0; i < stakeholder.badges_ids.length; i++){
+          console.log("-" + stakeholder.badges_ids[i]);
         }
 
         Stakeholder.update({_id: stakeholders_id}, stakeholder, (err) => {

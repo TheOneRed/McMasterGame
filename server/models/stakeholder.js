@@ -7,9 +7,7 @@ let StakeholderSchema = new Schema({
         type: String,
         required: "Stakeholder's name is required"
     },
-    badges: [{
-        badge_id: String
-    }],
+    badges_ids: [String],
     
 }, {
     collection: "stakeholders"
