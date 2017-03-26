@@ -15,7 +15,7 @@ router.get('/login', (req, res, next) => {
     // render the login page
     res.render('user/login', {
       title: 'Login',
-      messages: req.flash('loginMessage'),
+      messages: req.flash('error'),
       username: req.user ? req.user.username : ''
     });
     return;
@@ -41,6 +41,9 @@ router.get('/register', (req, res, next) =>{
       messages: req.flash('registerMessage'),
       username: req.user ? req.user.username : ''
     });
+    return;
+  } else {
+    return res.redirect('/');
   }
 });
 
