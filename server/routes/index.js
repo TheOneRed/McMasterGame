@@ -116,7 +116,7 @@ router.post('/newquest',requireAuth,  (req, res, next) => {
         console.error(err);
         res.end(error);
       } else {
-        stakeholder.badges_ids.push(stakeholders_id);
+        stakeholder.badges_ids.push(newQuest._id);
 
         for(let i= 0; i < stakeholder.badges_ids.length; i++){
           console.log("-" + stakeholder.badges_ids[i]);
@@ -131,8 +131,82 @@ router.post('/newquest',requireAuth,  (req, res, next) => {
       }
     });
 
-    res.redirect('/create')
+    res.redirect('/create');
   }
+});
+
+/* GET Edit page. */
+router.get('/edit',requireAuth,  (req, res, next) => {
+  Stakeholder.find((err, fondStakeholders) => {
+    if (err) {
+      console.error(err);
+      res.end(error);
+    } else {
+      Quest.find((err, fondQuest) => {
+        if (err) {
+          console.error(err);
+          res.end(error);
+        } else {
+          res.render('content/edit', {
+            title: 'Edit',
+            stakeholders: fondStakeholders,
+            quest: fondQuest,
+            username: req.user ? req.user.username : '' });
+      }});
+  }});
+});
+
+/* GET Delete Stakeholder page. */
+router.get('/deletestakeholder/:id', requireAuth, (req, res, next) => {
+  let id = req.params.id;
+  Stakeholder.remove({_id: id}, (err) => {
+    if (err) {
+      console.error(err);
+      res.end(error);
+    } else {
+        res.redirect('/edit')
+    }
+  });
+});
+
+/* GET Remove Quest page. */
+router.get('/removequest/:id',requireAuth,  (req, res, next) => {
+  let id = req.params.id;
+  let ids = id.split("!");
+
+  Stakeholder.findById(ids[0], (err, fondStakeholder) => {
+    if (err) {
+      console.error(err);
+      res.end(error);
+    } else {
+      let index = fondStakeholder.badges_ids.indexOf(ids[1]);
+
+      if (index > -1) {
+          fondStakeholder.badges_ids.splice(index, 1);
+      }
+
+      Stakeholder.update({_id: fondStakeholder._id}, fondStakeholder, (err) => {
+        if (err) {
+          console.error(err);
+          res.end(error);
+      }});
+    }
+  });
+
+  res.redirect('/edit');
+});
+
+/* GET Delete Quest page. */
+router.get('/deletequest/:id', requireAuth, (req, res, next) => {
+  let id = req.params.id;
+  Quest.remove({_id: id}, (err) => {
+    if (err) {
+      console.error(err);
+      res.end(error);
+    } else {
+        res.redirect('/edit')
+    }
+  });
 });
 
 module.exports = router;

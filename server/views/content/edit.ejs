@@ -1,0 +1,68 @@
+<% include ../partials/header.ejs %>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+            <h3><center>Edit Board </center></h3>
+            <br>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Rank</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Number of Badges</th>
+                            <th class="text-center">Score</th>
+                        </tr>
+                        <% for (let count = 0; count < stakeholders.length; count++) { %>
+                            <tr>
+                                <td class="text-center">Stakeholders</td>
+                                <td class="text-center"><%= stakeholders[count].name %></td>
+                                <td class="text-center"> </td>
+                                <td class="text-center">
+                                    <a class="btn btn-danger" href="deletestakeholder/<%= stakeholders[count]._id %>" role="button">  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>  </a>
+                                </td>
+                            </tr>
+
+                            <% for (let bcount = 0; bcount < stakeholders[count].badges_ids.length; bcount++) { %>
+                                <% for (let i = 0; i < quest.length; i++) { %>
+                                    <% if(stakeholders[count].badges_ids[bcount] == quest[i]._id) { %> 
+                                        <tr>
+                                            <td class="text-center">Quests</td>
+                                            <td class="text-center"><%= quest[i].name %></td>
+                                            <td class="text-center">Number of Badges</td>
+                                            <td class="text-center">
+                                                <a class="btn btn-danger" href="removequest/<%=stakeholders[count]._id%>!<%=quest[i]._id%>" role="button">  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>  </a>
+                                            </td>
+                                        </tr>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
+                        <% } %>
+                    </thead>               
+                </table>
+
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <% for (let i = 0; i < quest.length; i++) { %>
+                            <tr>
+                            <td class="text-center">Quests</td>
+                            <td class="text-center"><%= quest[i].name %></td>
+                            <td class="text-center"><%= quest[i]._id %></td>
+                            <td class="text-center">
+                                <a class="btn btn-danger" href="deletequest/<%=quest[i]._id%>" role="button">  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>  </a>
+                            </td>
+                            </tr>
+                        <% } %>
+                    </thead>               
+                </table> 
+            </div>
+            <div class="col-md-offset-1 col-md-10 text-center">
+                <ul class="pagination pagination-lg pager" id="myPager"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer.ejs %> 
