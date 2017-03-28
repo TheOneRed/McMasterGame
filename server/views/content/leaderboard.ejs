@@ -15,27 +15,6 @@
                   <th class="text-center">Number of Badges</th>
                   <th class="text-center">Score</th>
                 </tr>
-                <% for (let count = 0; count < stakeholders.length; count++) { %>
-                  <tr>
-                    <td class="text-center">Stakeholders</td>
-                    <td class="text-center"><%= stakeholders[count].name %></td>
-                    <td class="text-center">
-                      <% for (let bcount = 0; bcount < stakeholders[count].badges_ids.length; bcount++) { %>
-                        <%= stakeholders[count].badges_ids[bcount] %>
-                      <% } %>
-                    </td>
-                    <td class="text-center">Score</td>
-                  </tr>
-                <% } %>
-
-                <% for (let count = 0; count < quest.length; count++) { %>
-                  <tr>
-                    <td class="text-center">Quests</td>
-                    <td class="text-center"><%= quest[count].name %></td>
-                    <td class="text-center"><%= quest[count]._id %></td>
-                    <td class="text-center">Score</td>
-                  </tr>
-                <% } %>
               </thead>               
             </table> 
           </div>
