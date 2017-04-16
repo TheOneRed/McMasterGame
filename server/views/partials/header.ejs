@@ -47,6 +47,7 @@
                     <ul class="nav navbar-nav navbar-right">    
                         <% if(username) { %>
                             <li class="navbar-text"> Welcome, <%= username %></li>
+                            <li><a href="/user/reset"><i class="fa fa-key" aria-hidden="true"></i> Update Password</a></li>
                             <li><a href="/user/logout"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
                         <% } else { %>
                             <li><a href="/user/login"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>

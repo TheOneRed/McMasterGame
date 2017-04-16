@@ -1,0 +1,40 @@
+<% include ../partials/header.ejs %>
+<div class="panel-body">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
+    <% if (messages.length > 0) { %>
+        <div class="alert alert-danger"><%= messages %></div>
+      <% } %>
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+           <h1>Update password</h1>
+            <form method="post">
+                <fieldset class="form-group">
+                    <label>Email:</label>
+                    <input type="text" class="form-control" name="email" required autofocus/>
+                 </fieldset>
+                <fieldset class="form-group">
+                    <label>Username:</label>
+                    <input type="text" class="form-control" name="username" required autofocus/>
+                 </fieldset>
+                 <fieldset class="form-group">
+                    <label>New Password:</label>
+                    <input type="password" class="form-control" name="password" required/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Confirm New Password:</label>
+                    <input type="password" class="form-control" name="confPassword" required/>
+                </fieldset>
+                <fieldset class="form-group text-right">
+                    <input type="submit" class="btn btn-success" value="Update Password"/>
+                    <a href="/">
+                        <input type="button" class="btn btn-warning" value="Cancel"/>
+                    </a>
+               </fieldset>
+            </form>
+         </div>
+      </div>
+  </div>
+</div>
+<% include ../partials/footer.ejs %> 
