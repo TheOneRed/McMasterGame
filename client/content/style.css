@@ -1,9 +1,18 @@
+/*
+ *     Purpose: Main style sheet of the site
+ *     Authors: McMaster Team
+ *     Date: 2017-04-16
+ *     Version: 1.0
+ */
+
+/* Body style */
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color:#150000;
 }
 
+/* Links style */
 a {
   color: #00B7FF;
 }

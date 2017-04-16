@@ -1,10 +1,16 @@
+/*
+ *     Purpose: Express app configurator
+ *     Authors: McMaster Team
+ *     Date: 2017-04-16
+ *     Version: 1.0
+ */
+
 let express = require('express');
 let path = require('path');
 let favicon = require('serve-favicon');
 let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
-
 
 //module for authentication
 let session = require('express-session');
@@ -22,7 +28,7 @@ mongoose.connect(process.env.URI || configDB.URI);
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-  console.log("Connected to MongoDB");
+  console.log("DB  Connected to MongoDB");
 })
 
 

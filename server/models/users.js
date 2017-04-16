@@ -1,4 +1,11 @@
-// require these modules for our user model
+/*
+ *     Purpose: User model for db
+ *     Authors: McMaster Team
+ *     Date: 2017-04-16
+ *     Version: 1.0
+ */
+
+// Require these modules for our stakeholder model
 let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 let passportLocalMongoose = require("passport-local-mongoose");
@@ -19,12 +26,14 @@ let UserSchema = new Schema({
     default: "Student"
   }
 },
-{
-  collection: "users"
-});
+  {
+    collection: "users"
+  });
 
-let options = ({missingPasswordError: "Wrong Password"});
+let options = ({ missingPasswordError: "Wrong Password" });
 
+// Inject auth functionality
 UserSchema.plugin(passportLocalMongoose, options);
 
+// Make it available for import
 exports.User = mongoose.model('User', UserSchema);

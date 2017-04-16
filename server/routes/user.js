@@ -1,10 +1,17 @@
-// modules required for routing
+/*
+ *     Purpose: Auth routers for the website
+ *     Authors: McMaster Team
+ *     Date: 2017-04-16
+ *     Version: 1.0
+ */
+
+// Modules required for routing
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 let passport = require('passport');
 
-// define the user model
+// Define the user model
 let UserModel = require('../models/users');
 let User = UserModel.User; // alias for User
 
@@ -77,7 +84,7 @@ router.post('/register', (req, res, next) => {
 
 /* GET /reset - render the reset password view */
 router.get('/reset', (req, res, next) => {
-  // check to see  if the user is not already logged index
+  // Check if user authorized for this function
   if (req.user) {
     // render the login page
     res.render('user/reset', {
@@ -93,11 +100,14 @@ router.get('/reset', (req, res, next) => {
 
 // POST /reset - update user's password
 router.post('/reset', (req, res, next) => {
-  console.log("USER" + req.user);
+  // Check if user authorized for this function
   if (req.user) {
+    // Check if password matches
     if (req.body.password == req.body.confPassword) {
       User.findByUsername(req.body.username).then(function (sanitizedUser) {
+        // Check if user found
         if (sanitizedUser) {
+          // Check if email matches
           if (sanitizedUser.email === req.body.email) {
             sanitizedUser.setPassword(req.body.password, function () {
               sanitizedUser.save();

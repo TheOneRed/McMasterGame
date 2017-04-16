@@ -1,4 +1,11 @@
-// require these modules for our quest model
+/*
+ *     Purpose: Play model for db
+ *     Authors: McMaster Team
+ *     Date: 2017-04-16
+ *     Version: 1.0
+ */
+
+// Require these modules for our quest model
 let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
@@ -9,7 +16,8 @@ let PlaySchema = new Schema({
     assignedBadge: String,
     assignedStakeholder: String
 }, {
-    collection: "plays"
-});
+        collection: "plays"
+    });
 
+// Make it available for import
 exports.Play = mongoose.model('Play', PlaySchema);

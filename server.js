@@ -1,5 +1,12 @@
 #!/usr/bin/env node
 
+/*
+ *     Purpose: Node.js server configuration
+ *     Authors: McMaster Team
+ *     Date: 2017-04-16
+ *     Version: 1.0
+ */
+
 /**
  * Module dependencies.
  */
