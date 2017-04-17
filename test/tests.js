@@ -1,3 +1,11 @@
+/*
+ *     Purpose: Unit testing file for site controllers
+ *     Authors: McMaster Team
+ *     Date: 2017-04-16
+ *     Version: 1.0
+ */
+
+// import required for testing packages
 var assert = require('assert');
 var request = require('supertest');
 
