@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon",
+    "test": "mocha test/tests.js"
   },
   "engines": {
     "node": ">=6.0.0",
@@ -41,6 +42,9 @@
     "@types/express-session": "0.0.32",
     "@types/passport": "^0.3.3",
     "@types/passport-local": "^1.0.29",
-    "@types/passport-local-mongoose": "^4.0.8"
+    "@types/passport-local-mongoose": "^4.0.8",
+    "assert": "^1.4.1",
+    "mocha": "^3.2.0",
+    "supertest": "^3.0.0"
   }
 }

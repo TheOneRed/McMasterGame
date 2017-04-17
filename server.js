@@ -95,3 +95,8 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+// Setup for unit testing
+if (process.env.NODE_ENV === 'test') {
+  module.exports.server = app;
+}
