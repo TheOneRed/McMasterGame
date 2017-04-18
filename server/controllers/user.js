@@ -31,7 +31,7 @@ module.exports.DisplayLogin = (req, res) => {
         res.render('user/login', {
             title: 'Login',
             messages: req.flash('error'),
-            username: req.user ? req.user.username : ''
+            username: req.user ? req.user.username : '',                     user_type: req.user ? req.user.user_type : ''
         });
         return;
     } else {
@@ -55,7 +55,7 @@ module.exports.DisplayRegister = (req, res) => {
         res.render('user/register', {
             title: 'Register',
             messages: req.flash('registerMessage'),
-            username: req.user ? req.user.username : ''
+            username: req.user ? req.user.username : '',                     user_type: req.user ? req.user.user_type : ''
         });
         return;
     } else {
@@ -70,6 +70,7 @@ module.exports.ProcessRegister = (req, res) => {
         new User({
             username: req.body.username,
             email: req.body.email,
+            user_type: (req.body.teacherCode == 'Game Master')?'Game Master':'Student'
         }),
         req.body.password,
         (err) => {
@@ -81,7 +82,9 @@ module.exports.ProcessRegister = (req, res) => {
                 return res.render('user/register', {
                     title: 'Register',
                     messages: req.flash('registerMessage'),
-                    username: req.user ? req.user.username : ''
+                    username: req.user ? req.user.username : '',                     
+                    user_type: req.user ? req.user.user_type : ''
+
                 });
             }
             // if registration is successful
@@ -99,7 +102,8 @@ module.exports.DisplayReset = (req, res) => {
         res.render('user/reset', {
             title: 'Reset',
             messages: req.flash('error'),
-            username: req.user ? req.user.username : ''
+            username: req.user ? req.user.username : '',                     
+            user_type: req.user ? req.user.user_type : ''
         });
         return;
     } else {
@@ -124,7 +128,8 @@ module.exports.ProcessReset = (req, res) => {
                             return res.render('user/reset', {
                                 title: 'Reset',
                                 messages: req.flash('resetMessage'),
-                                username: req.user ? req.user.username : ''
+                                username: req.user ? req.user.username : '',                     
+                                user_type: req.user ? req.user.user_type : ''
                             });
                         });
                     } else {
@@ -132,7 +137,8 @@ module.exports.ProcessReset = (req, res) => {
                         return res.render('user/reset', {
                             title: 'Reset',
                             messages: req.flash('resetMessage'),
-                            username: req.user ? req.user.username : ''
+                            username: req.user ? req.user.username : '',                     
+                            user_type: req.user ? req.user.user_type : ''
                         });
                     }
                 } else {
@@ -140,7 +146,8 @@ module.exports.ProcessReset = (req, res) => {
                     return res.render('user/reset', {
                         title: 'Reset',
                         messages: req.flash('registerMessage'),
-                        username: req.user ? req.user.username : ''
+                        username: req.user ? req.user.username : '',                     
+                        user_type: req.user ? req.user.user_type : ''
                     });
                 }
             }, function (err) {
@@ -148,7 +155,8 @@ module.exports.ProcessReset = (req, res) => {
                 return res.render('user/reset', {
                     title: 'Reset',
                     messages: req.flash('registerMessage'),
-                    username: req.user ? req.user.username : ''
+                    username: req.user ? req.user.username : '',                     
+                    user_type: req.user ? req.user.user_type : ''
                 });
             })
         } else {
@@ -156,7 +164,8 @@ module.exports.ProcessReset = (req, res) => {
             return res.render('user/reset', {
                 title: 'Reset',
                 messages: req.flash('resetMessage'),
-                username: req.user ? req.user.username : ''
+                username: req.user ? req.user.username : '',                     
+                user_type: req.user ? req.user.user_type : ''
             });
         }
     } else {

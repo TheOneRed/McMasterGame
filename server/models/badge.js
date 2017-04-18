@@ -12,7 +12,8 @@ let Schema = mongoose.Schema;
 let BadgeSchema = new Schema({
     name: String,
     picName: String
-}, {
+},
+    {
         collection: "badges"
     });
 

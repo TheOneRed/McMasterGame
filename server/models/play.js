@@ -15,7 +15,8 @@ let PlaySchema = new Schema({
     result: String,
     assignedBadge: String,
     assignedStakeholder: String
-}, {
+},
+    {
         collection: "plays"
     });
 
