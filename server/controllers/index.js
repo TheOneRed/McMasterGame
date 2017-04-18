@@ -1,19 +1,28 @@
-// define the Stakeholder model
+/*
+ *     Purpose: Main controllers for the website
+ *     Authors: McMaster Team
+ *     Date: 2017-04-16
+ *     Version: 1.0
+ */
+
+// Define the Stakeholder model
 let StakeholderModel = require('../models/stakeholder');
 let Stakeholder = StakeholderModel.Stakeholder; // alias for Stakeholder
 
-// define the quest model
+// Define the quest model
 let QuestModel = require('../models/quest');
 let Quest = QuestModel.Quest; // alias for quest
 
-module.exports.DisplayHome = (req, res)  => {
+/* home page controller */
+module.exports.DisplayHome = (req, res) => {
     res.render('content/index', {
         title: 'Home',
         username: req.user ? req.user.username : ''
     });
 }
 
-module.exports.DisplayLeader = (req, res)  => {
+/* leader page controller */
+module.exports.DisplayLeader = (req, res) => {
     Stakeholder.find((err, fondStakeholders) => {
         if (err) {
             console.error(err);
@@ -36,21 +45,24 @@ module.exports.DisplayLeader = (req, res)  => {
     });
 }
 
-module.exports.DisplayBadge = (req, res)  => {
+/* badge page controller */
+module.exports.DisplayBadge = (req, res) => {
     res.render('content/badge', {
         title: 'Badge',
         username: req.user ? req.user.username : ''
     });
 }
 
-module.exports.DisplayProfile = (req, res)  => {
+/* profile page controller */
+module.exports.DisplayProfile = (req, res) => {
     res.render('content/profile', {
         title: 'Profile',
         username: req.user ? req.user.username : ''
     });
 }
 
-module.exports.DisplayCreate = (req, res)  => {
+/* create page controller */
+module.exports.DisplayCreate = (req, res) => {
     Stakeholder.find((err, stakeholders) => {
         if (err) {
             console.error(err);
@@ -65,7 +77,8 @@ module.exports.DisplayCreate = (req, res)  => {
     });
 }
 
-module.exports.CreateStakeHolder = (req, res)  => {
+/* newstakeholder page controller */
+module.exports.CreateStakeHolder = (req, res) => {
     let newStakeholder = new Stakeholder({
         "name": req.body.stakeholderName,
         "badges_id": []
@@ -81,7 +94,8 @@ module.exports.CreateStakeHolder = (req, res)  => {
     });
 }
 
-module.exports.CreateQuest = (req, res)  => {
+/* newquest page controller */
+module.exports.CreateQuest = (req, res) => {
     if (req.body.stakeholders == "NULL") {
         res.redirect('/create')
     } else {
@@ -120,7 +134,8 @@ module.exports.CreateQuest = (req, res)  => {
     }
 }
 
-module.exports.DisplayEdit = (req, res)  => {
+/* edit page controller */
+module.exports.DisplayEdit = (req, res) => {
     Stakeholder.find((err, fondStakeholders) => {
         if (err) {
             console.error(err);
@@ -143,7 +158,8 @@ module.exports.DisplayEdit = (req, res)  => {
     });
 }
 
-module.exports.DeleteStakeHolder = (req, res)  => {
+/* delete Stakeholder page controller */
+module.exports.DeleteStakeHolder = (req, res) => {
     let id = req.params.id;
     Stakeholder.remove({ _id: id }, (err) => {
         if (err) {
@@ -155,7 +171,8 @@ module.exports.DeleteStakeHolder = (req, res)  => {
     });
 }
 
-module.exports.RemoveQuest = (req, res)  => {
+/* Remove Quest page controller */
+module.exports.RemoveQuest = (req, res) => {
     let id = req.params.id;
     let ids = id.split("!");
 
@@ -182,7 +199,8 @@ module.exports.RemoveQuest = (req, res)  => {
     res.redirect('/edit');
 }
 
-module.exports.DeleteQuest = (req, res)  => {
+/* Delete Quest page controller */
+module.exports.DeleteQuest = (req, res) => {
     let id = req.params.id;
     Quest.remove({ _id: id }, (err) => {
         if (err) {

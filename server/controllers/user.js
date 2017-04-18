@@ -1,3 +1,11 @@
+/*
+ *     Purpose: Auth controllers for the website
+ *     Authors: McMaster Team
+ *     Date: 2017-04-16
+ *     Version: 1.0
+ */
+
+// Modules required for db processing
 let mongoose = require('mongoose');
 let passport = require('passport');
 
@@ -5,16 +13,18 @@ let passport = require('passport');
 let UserModel = require('../models/users');
 let User = UserModel.User; // alias for User
 
-//check if authenticated
+//Check if authenticated
 module.exports.RequireAuth = (req, res, next) => {
-    if(!req.isAuthenticated()) {
-        return res.redirect('/user/login');
+    if (process.env.NODE_ENV != 'test') {
+        if (!req.isAuthenticated()) {
+            return res.redirect('/user/login');
+        }
     }
-    
     next();
 }
 
-module.exports.DisplayLogin = (req, res)  => {
+/* /login controller - render the login view */
+module.exports.DisplayLogin = (req, res) => {
     // check to see  if the user is not already logged index
     if (!req.user) {
         // render the login page
@@ -28,8 +38,8 @@ module.exports.DisplayLogin = (req, res)  => {
         return res.redirect('/');
     }
 }
-
-module.exports.ProcessLogin = (req, res)  => {
+// /login controller - process the login page
+module.exports.ProcessLogin = (req, res) => {
     return passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/user/login',
@@ -37,7 +47,8 @@ module.exports.ProcessLogin = (req, res)  => {
     })
 }
 
-module.exports.DisplayRegister = (req, res)  => {
+// /register controller - render the register page
+module.exports.DisplayRegister = (req, res) => {
     // check if the user is not already logged in
     if (!req.user) {
         // render the registration page
@@ -52,7 +63,8 @@ module.exports.DisplayRegister = (req, res)  => {
     }
 }
 
-module.exports.ProcessRegister = (req, res)  => {
+// /register controller - process the registration view
+module.exports.ProcessRegister = (req, res) => {
     User.setPassword()
     User.register(
         new User({
@@ -79,7 +91,8 @@ module.exports.ProcessRegister = (req, res)  => {
         });
 }
 
-module.exports.DisplayReset = (req, res)  => {
+/* /reset controller - render the reset password view */
+module.exports.DisplayReset = (req, res) => {
     // Check if user authorized for this function
     if (req.user) {
         // render the login page
@@ -94,7 +107,8 @@ module.exports.DisplayReset = (req, res)  => {
     }
 }
 
-module.exports.ProcessReset = (req, res)  => {
+//  /reset controller - update user's password
+module.exports.ProcessReset = (req, res) => {
     // Check if user authorized for this function
     if (req.user) {
         // Check if password matches
@@ -106,7 +120,7 @@ module.exports.ProcessReset = (req, res)  => {
                     if (sanitizedUser.email === req.body.email) {
                         sanitizedUser.setPassword(req.body.password, function () {
                             sanitizedUser.save();
-                            req.flash('resetMessage', 'Password is updated successfuly!');
+                            req.flash('resetMessage', 'Password is updated successfully!');
                             return res.render('user/reset', {
                                 title: 'Reset',
                                 messages: req.flash('resetMessage'),
@@ -150,7 +164,8 @@ module.exports.ProcessReset = (req, res)  => {
     }
 }
 
-module.exports.ProcessLogout = (req, res)  => {
+// /logout controller - logout the user and redirect to the home page
+module.exports.ProcessLogout = (req, res) => {
     req.logout();
     res.redirect('/'); // redirect to homepage
 }

@@ -36,7 +36,7 @@ describe('Unit tests for McMasterGame Project', function () {
             .get('/')
             .expect(200)
             .end(function (err, response) {
-                assert.equal(response.header['content-type'], 'text/html; charset=utf-8');
+                assert.equal(response.header['content-type'], 'text/plain; charset=utf-8');
                 done();
             });
     });
