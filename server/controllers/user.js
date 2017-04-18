@@ -31,7 +31,8 @@ module.exports.DisplayLogin = (req, res) => {
         res.render('user/login', {
             title: 'Login',
             messages: req.flash('error'),
-            username: req.user ? req.user.username : '',                     user_type: req.user ? req.user.user_type : ''
+            username: req.user ? req.user.username : '',                     
+            user_type: req.user ? req.user.user_type : ''
         });
         return;
     } else {
@@ -55,7 +56,8 @@ module.exports.DisplayRegister = (req, res) => {
         res.render('user/register', {
             title: 'Register',
             messages: req.flash('registerMessage'),
-            username: req.user ? req.user.username : '',                     user_type: req.user ? req.user.user_type : ''
+            username: req.user ? req.user.username : '',                     
+            user_type: req.user ? req.user.user_type : ''
         });
         return;
     } else {
@@ -65,7 +67,6 @@ module.exports.DisplayRegister = (req, res) => {
 
 // /register controller - process the registration view
 module.exports.ProcessRegister = (req, res) => {
-    User.setPassword()
     User.register(
         new User({
             username: req.body.username,
