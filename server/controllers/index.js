@@ -13,35 +13,31 @@ let Stakeholder = StakeholderModel.Stakeholder; // alias for Stakeholder
 let QuestModel = require('../models/quest');
 let Quest = QuestModel.Quest; // alias for quest
 
+// Define the play model
+let PlayModel = require('../models/play');
+let Play = PlayModel.Play; // alias for quest
+
 /* home page controller */
 module.exports.DisplayHome = (req, res) => {
     res.render('content/index', {
         title: 'Home',
-        username: req.user ? req.user.username : '',                     
+        username: req.user ? req.user.username : '',
         user_type: req.user ? req.user.user_type : ''
     });
 }
 
 /* leader page controller */
 module.exports.DisplayLeader = (req, res) => {
-    Stakeholder.find((err, fondStakeholders) => {
+    Play.find((err, outPlay) => {
         if (err) {
             console.error(err);
             res.end(error);
         } else {
-            Quest.find((err, fondQuest) => {
-                if (err) {
-                    console.error(err);
-                    res.end(error);
-                } else {
-                    res.render('content/leaderboard', {
-                        title: 'Leaderboard',
-                        stakeholders: fondStakeholders,
-                        quest: fondQuest,
-                        username: req.user ? req.user.username : '',                     
-                        user_type: req.user ? req.user.user_type : ''
-                    });
-                }
+            res.render('content/leaderboard', {
+                title: 'Leaderboard',
+                leaders: outPlay,
+                username: req.user ? req.user.username : '',
+                user_type: req.user ? req.user.user_type : ''
             });
         }
     });
@@ -51,7 +47,7 @@ module.exports.DisplayLeader = (req, res) => {
 module.exports.DisplayBadge = (req, res) => {
     res.render('content/badge', {
         title: 'Badge',
-        username: req.user ? req.user.username : '',                     
+        username: req.user ? req.user.username : '',
         user_type: req.user ? req.user.user_type : ''
     });
 }
@@ -60,7 +56,7 @@ module.exports.DisplayBadge = (req, res) => {
 module.exports.DisplayProfile = (req, res) => {
     res.render('content/profile', {
         title: 'Profile',
-        username: req.user ? req.user.username : '',                     
+        username: req.user ? req.user.username : '',
         user_type: req.user ? req.user.user_type : ''
     });
 }
@@ -75,7 +71,7 @@ module.exports.DisplayCreate = (req, res) => {
             res.render('content/create', {
                 title: 'Create',
                 stakeholders: stakeholders,
-                username: req.user ? req.user.username : '',                     
+                username: req.user ? req.user.username : '',
                 user_type: req.user ? req.user.user_type : ''
             });
         }
@@ -155,7 +151,7 @@ module.exports.DisplayEdit = (req, res) => {
                         title: 'Edit',
                         stakeholders: fondStakeholders,
                         quest: fondQuest,
-                        username: req.user ? req.user.username : '',                     
+                        username: req.user ? req.user.username : '',
                         user_type: req.user ? req.user.user_type : ''
                     });
                 }

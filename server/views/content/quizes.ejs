@@ -2,28 +2,42 @@
         <div class="panel-body">
           <div class="col-md-2"></div>
           <div class="col-md-8">
-            <table class="table">
-              <tr>
-                <th>Name</th>
-                <th>Created by</th>
-                <th></th>
-                <th></th>
-              </tr>
-              <% for (let count = 0; count < quizes.length; count++) { %>
+            <div class="table-responsive">
+              <table class="table table-hover">
                 <tr>
-                  <td> <%=quizes[count].name %>  </td>
-                  <td> <%=quizes[count].user_name %>  </td>
-
-                  <td> <a href="/do/<%=quizes[count]._id %>" role="button"> Do </a> </td>
-                  <td> <a href="/answer/<%=quizes[count]._id %>" role="button"> Answers </a> </td>
-
-                  <td> <a href="/answer/<%=quizes[count]._id %>" role="button"> Answers </a> </td>
-
-                  <td> <a href="/answer/<%=quizes[count]._id %>" role="button"> Answers </a> </td>
-                  
+                  <th>Name</th>
+                  <th>Created by</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
                 </tr>
-              <% } %>
-            </table>
+                <% for (let count = 0; count < quizes.length; count++) { %>
+                  <tr>
+                    <td> <%=quizes[count].name %>  </td>
+                    <td> <%=quizes[count].user_name %>  </td>
+
+                    <td> 
+                    <% if(user_type!='Game Master') { %>
+                        <a href="/do/<%=quizes[count]._id %>" role="button"> Do </a>        
+                      <% } %>
+                            
+                    </td>
+                    <td> <a href="/answer/<%=quizes[count]._id %>" role="button"> Answers </a> </td>
+                    <td>
+                      <% if(user_type=='Game Master') { %>
+                        <a href="/acceptBadge/<%=quizes[count]._id %>" role="button"> Accept badge </a>        
+                      <% } %>          
+                    </td> 
+                    <td>
+                      <% if(user_type=='Game Master') { %>
+                        <a href="/acceptStakeholder/<%=quizes[count]._id %>" role="button"> Accept stakeholder </a>       
+                      <% } %>          
+                    </td> 
+                  </tr>
+                <% } %>
+              </table>
+           </div>
           </div>
         </div>
 <% include ../partials/footer.ejs %> 

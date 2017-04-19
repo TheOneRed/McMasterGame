@@ -3,13 +3,16 @@ let mongoose = require("mongoose");
 
 let AnswerSchema = mongoose.Schema({
   answered: Number,
-  questions: [{ 
-      category: String,
-      answers: [String]
-    }]
+  stakeholder: String,
+  badge: String,
+  takenBy: String,
+  questions: [{
+    category: String,
+    answers: [String]
+  }]
 },
-{
-  collection: "answer"
-});
+  {
+    collection: "answer"
+  });
 
 module.exports = mongoose.model('Answer', AnswerSchema);

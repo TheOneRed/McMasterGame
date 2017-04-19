@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 
 
-// Define the Stakeholder model
+// Define the stakeholder model
 let StakeholderModel = require('../models/stakeholder');
 let Stakeholder = StakeholderModel.Stakeholder; // alias for Stakeholder
 
@@ -9,7 +9,11 @@ let Stakeholder = StakeholderModel.Stakeholder; // alias for Stakeholder
 let QuestModel = require('../models/quest');
 let Quest = QuestModel.Quest; // alias for quest
 
-// Defime quiz and answer models
+// Define the play model
+let PlayModel = require('../models/play');
+let Play = PlayModel.Play; // alias for quest
+
+// Define quiz and answer models
 let quiz = require('../models/quiz');
 let answer = require('../models/answer');
 
@@ -61,6 +65,9 @@ module.exports.ProcessQuiz = (req, res) => {
             let newAnswer = new answer({
                 "_id": id,
                 "answered": 1,
+                "takenBy": req.user.username,
+                "stakeholder": sess.quiz.stakeholder,
+                "badge": sess.quiz.badge,
                 "questions": []
             });
 
@@ -90,6 +97,7 @@ module.exports.ProcessQuiz = (req, res) => {
                 }
             });
         } else {
+            outAnwer.takeBy = req.user.username;
             outAnswer.answered++;
             for (let i = 0; i < sess.quiz.questions.length; i++) {
                 let rb = req.body['q' + i];
@@ -253,4 +261,89 @@ module.exports.ProcessCreateQuiz = (req, res) => {
             });
         }
     }
+}
+
+/* Accept Badge controller */
+module.exports.ProcessAcceptBadge = (req, res) => {
+    let id = req.params.id;
+    answer.findById(id, (err, outAnswer) => {
+        if (err) {
+            console.error(err);
+            res.end(error);
+        } else {
+            Play.find({ "username": outAnswer.takenBy }, (err, outPlay) => {
+                if (err) {
+                    console.error(err);
+                    res.end(error);
+                } else if (outPlay == false) {
+                    let newPlay = new Play({
+                        "username": outAnswer.takenBy,
+                        "assignedBadge": outAnswer.badge,
+                        "assignedStakeholder": outAnswer.stakeholder
+                    });
+                    Play.create(newPlay, (err) => {
+                        if (err) {
+                            console.error(err);
+                            res.end(error);
+                        } else {
+                            res.redirect('/quizes')
+                        }
+                    });
+                } else {
+                    outPlay.assignedBadge = outAnswer.badge;
+                    Play.update({ _id: id }, outPlay, (err) => {
+                        if (err) {
+                            console.error(err);
+                            res.end(error);
+                        } else {
+                            res.redirect('/quizes');
+                        }
+                    });
+                }
+            });
+        }
+    });
+}
+
+/* Accept Stakeholder controller */
+module.exports.ProcessAcceptStakeholder = (req, res) => {
+    let id = req.params.id;
+
+    answer.findById(id, (err, outAnswer) => {
+        if (err) {
+            console.error(err);
+            res.end(error);
+        } else {
+            Play.find({ "username": outAnswer.takenBy }, (err, outPlay) => {
+                if (err) {
+                    console.error(err);
+                    res.end(error);
+                } else if (outPlay == false) {
+                    let newPlay = new Play({
+                        "username": outAnswer.takenBy,
+                        "assignedBadge": outAnswer.badge,
+                        "assignedStakeholder": outAnswer.stakeholder
+                    });
+                    Play.create(newPlay, (err) => {
+                        if (err) {
+                            console.error(err);
+                            res.end(error);
+                        } else {
+                            res.redirect('/quizes')
+                        }
+                    });
+                } else {
+                    outPlay.assignedStakeholder = outAnswer.stakeholder;
+                    Play.update({ _id: id }, outPlay, (err) => {
+                        if (err) {
+                            console.error(err);
+                            res.end(error);
+                        } else {
+                            res.redirect('/quizes');
+                        }
+                    });
+                }
+            });
+        }
+    });
 }

@@ -22,7 +22,17 @@
                   <th class="text-center">Name of Badges/ Stakeholders</th>
                   <th class="text-center">Score</th>
                 </tr>
-              </thead>               
+              </thead>
+              <tbody>
+              <% for (let count = 0; count < leaders.length; count++) { %>
+                  <tr>
+                    <td> <%= count+1 %></td>
+                    <td> <%=leaders[count].username %>  </td>
+                    <td> <%=leaders[count].assignedBadge %>, <%=leaders[count].assignedStakeholder %> </td>
+                    <td> </td>
+                  </tr>
+                <% } %>
+              </tbody>               
             </table> 
           </div>
            <div class="col-md-offset-1 col-md-10 text-center">

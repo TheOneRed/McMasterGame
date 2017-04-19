@@ -68,36 +68,46 @@ router.get('/deletequest/:id', userController.RequireAuth, (req, res, next) => {
     indexController.DeleteQuest(req, res);
 });
 
+/* GET Accept Badge requiest */
+router.get('/acceptBadge/:id', userController.RequireAuth, (req, res, next) => {
+    quizController.ProcessAcceptBadge(req, res);
+});
+
+/* GET Accept Stakeholder request */
+router.get('/acceptStakeholder/:id', userController.RequireAuth, (req, res, next) => {
+    quizController.ProcessAcceptStakeholder(req, res);
+});
+
 //
 //
-router.get('/quizes', (req, res, next) => {
+router.get('/quizes', userController.RequireAuth, (req, res, next) => {
     quizController.DisplayQuizes(req, res);
-  }
+}
 );
 
 router.get('/do/:id', (req, res, next) => {
     quizController.DisplayQuiz(req, res);
-  }
+}
 );
 
 router.post('/do/:id', (req, res, next) => {
     quizController.ProcessQuiz(req, res);
-  }
+}
 );
 
 router.get('/answer/:id', (req, res, next) => {
     quizController.DisplayAnswer(req, res);
-  }
+}
 );
 
-router.get('/createquiz', userController.RequireAuth,  (req, res, next) => {
+router.get('/createquiz', userController.RequireAuth, (req, res, next) => {
     quizController.DisplayCreateQuiz(req, res);
-  }
+}
 );
 
 router.post('/createquiz', userController.RequireAuth, (req, res, next) => {
     quizController.ProcessCreateQuiz(req, res);
-  }
+}
 );
 //
 //
