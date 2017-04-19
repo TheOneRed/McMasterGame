@@ -34,18 +34,6 @@
   </div>
 </form>
 <!-- Stakeholder box End -->
-          
-
-<!-- PATIENT BADGES Start -->
-<form style="display:none" id="patientBadgeForm">
-  <div class="well carousel-search hidden-phone">
-    <p>patient</p>
-    <p>(Show all badges connected to the stake holder. Color in badges
-        that user has earned and grey out the badges that they haven't earned')
-    </p>
-  </div>
-</form>
-<!-- PATIENT BADGES End -->
 
 <!-- GUIDELINE IMPLEMENTORS BADGES Start -->
 <form style="display:none" id="guidelineBadgeForm">
@@ -59,7 +47,7 @@
 <!-- GUIDELINE IMPLEMENTORS BADGES End -->
 
 <!-- ORGANIZATIONS BADGES Start -->
-<form style="display:none" id="organizationsBadgeForm">
+<form style="display:none" id="organizationBadgeForm">
   <div class="well carousel-search hidden-phone">
     <p>organizations</p>
     <p>(Show all badges connected to the stake holder. Color in badges
@@ -69,16 +57,6 @@
 </form>
 <!-- ORGANIZATIONS BADGES End -->
 
-<!-- PROVIDERS BADGES Start -->
-<form style="display:none" id="providersBadgeForm">
-  <div class="well carousel-search hidden-phone">
-    <p>provider</p>
-    <p>(Show all badges connected to the stake holder. Color in badges
-        that user has earned and grey out the badges that they haven't earned')
-    </p>
-  </div>
-</form>
-<!-- PROVIDERS BADGES End -->
 
 <!-- PATIENT BADGES Start -->
 <form style="display:none" id="patientBadgeForm">
@@ -91,8 +69,19 @@
 </form>
 <!-- PATIENT BADGES End -->
 
+<!-- PROVIDERS BADGES Start -->
+<form style="display:none" id="providersBadgeForm">
+  <div class="well carousel-search hidden-phone">
+    <p>provider</p>
+    <p>(Show all badges connected to the stake holder. Color in badges
+        that user has earned and grey out the badges that they haven't earned')
+    </p>
+  </div>
+</form>
+<!-- PROVIDERS BADGES End -->
+
 <!-- RESEARCHERS BADGES Start -->
-<form style="display:none" id="researchersBadgeForm">
+<form style="display:none" id="researchBadgeForm">
   <div class="well carousel-search hidden-phone">
     <p>researcher</p>
     <p>(Show all badges connected to the stake holder. Color in badges
@@ -113,6 +102,17 @@
 </form>
 <!-- SYSTEM MANAGERS BADGES End -->
 
+<!-- TECHNOLOGY BADGES Start -->
+<form style="display:none" id="technologyBadgeForm">
+  <div class="well carousel-search hidden-phone">
+    <p>technology</p>
+    <p>(Show all badges connected to the stake holder. Color in badges
+        that user has earned and grey out the badges that they haven't earned')
+    </p>
+  </div>
+</form>
+<!-- TECHNOLOGY BADGES End -->
+
 <!-- VENDOR BADGES Start -->
 <form style="display:none" id="vendorBadgeForm">
   <div class="well carousel-search hidden-phone">
@@ -131,55 +131,263 @@
   let selText = $(this).text();
   $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
   //badge element visible
+  
+   //HANDLE GUIDELINE FORM
+  if (selText == "Guideline Implementors")
+  {
+     let a = document.getElementById('organizationBadgeForm');
+      a.style.display = 'none';
+
+      let b = document.getElementById('patientBadgeForm');
+      b.style.display = 'none';
+
+      let c = document.getElementById('providersBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('researchBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('systemBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('technologyBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('vendorBadgeForm');
+      g.style.display = 'none';
+
+      let h = document.getElementById('guidelineBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
+    } else {
+        h.style.display = 'inline';
+    }
+  }
+
+   //HANDLE ORGANIZATION FORM
+  if (selText == "Organizations")
+  {
+     let a = document.getElementById('guidelineBadgeForm');
+      a.style.display = 'none';
+
+      let b = document.getElementById('patientBadgeForm');
+      b.style.display = 'none';
+
+      let c = document.getElementById('providersBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('researchBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('systemBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('technologyBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('vendorBadgeForm');
+      g.style.display = 'none';
+
+      let h = document.getElementById('organizationBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
+    } else {
+        h.style.display = 'inline';
+    }
+  }
+
+   //HANDLE PROVIDERS FORM
+  if(selText == "Providers")
+  {
+      let a = document.getElementById('guidelineBadgeForm');
+      a.style.display = 'none';
+
+      let b = document.getElementById('organizationBadgeForm');
+      b.style.display = 'none';
+
+      let c = document.getElementById('patientBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('researchBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('systemBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('technologyBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('vendorBadgeForm');
+      g.style.display = 'none';
+
+  let h = document.getElementById('providersBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
+    } else {
+        h.style.display = 'inline';
+    }
+  }
+
+  //HANDLE PATIENT FORM
   if(selText == "Patients")
   {
-      let y = document.getElementById('vendorBadgeForm');
-      y.style.display = 'none';
+      let a = document.getElementById('guidelineBadgeForm');
+      a.style.display = 'none';
 
-      let z = document.getElementById('providersBadgeForm');
-      z.style.display = 'none';
+      let b = document.getElementById('organizationBadgeForm');
+      b.style.display = 'none';
 
-  let x = document.getElementById('patientBadgeForm');
-    if (x.style.display === 'none') {
-        x.style.display = 'inline';
+      let c = document.getElementById('providersBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('researchBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('systemBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('technologyBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('vendorBadgeForm');
+      g.style.display = 'none';
+
+  let h = document.getElementById('patientBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
     } else {
-        x.style.display = 'inline';
+        h.style.display = 'inline';
+    }
+  }
+
+   //HANDLE RESEARCH FORM
+  if(selText == "Researchers & Academics")
+  {
+      let a = document.getElementById('guidelineBadgeForm');
+      a.style.display = 'none';
+
+      let b = document.getElementById('organizationBadgeForm');
+      b.style.display = 'none';
+
+      let c = document.getElementById('patientBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('providersBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('systemBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('technologyBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('vendorBadgeForm');
+      g.style.display = 'none';
+
+  let h = document.getElementById('researchBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
+    } else {
+        h.style.display = 'inline';
+    }
+  }
+
+    //HANDLE SYSTEM FORM
+  if(selText == "System Managers")
+  {
+      let a = document.getElementById('guidelineBadgeForm');
+      a.style.display = 'none';
+
+      let b = document.getElementById('organizationBadgeForm');
+      b.style.display = 'none';
+
+      let c = document.getElementById('patientBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('providersBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('researchBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('technologyBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('vendorBadgeForm');
+      g.style.display = 'none';
+
+  let h = document.getElementById('systemBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
+    } else {
+        h.style.display = 'inline';
+    }
+  }
+
+      //HANDLE TECHNOLOGY FORM
+  if(selText == "Technology Implementers")
+  {
+      let a = document.getElementById('guidelineBadgeForm');
+      a.style.display = 'none';
+
+      let b = document.getElementById('organizationBadgeForm');
+      b.style.display = 'none';
+
+      let c = document.getElementById('patientBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('providersBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('researchBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('systemBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('vendorBadgeForm');
+      g.style.display = 'none';
+
+  let h = document.getElementById('technologyBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
+    } else {
+        h.style.display = 'inline';
     }
   }
 
   //HANDLE VENDOR FORM
   if (selText == "Vendors")
   {
-     let x = document.getElementById('patientBadgeForm');
-      x.style.display = 'none';
+      let a = document.getElementById('guidelineBadgeForm');
+      a.style.display = 'none';
 
-      let z = document.getElementById('providersBadgeForm');
-      z.style.display = 'none';
+      let b = document.getElementById('organizationBadgeForm');
+      b.style.display = 'none';
 
-      let y = document.getElementById('vendorBadgeForm');
-    if (y.style.display === 'none') {
-        y.style.display = 'inline';
+      let c = document.getElementById('patientBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('providersBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('researchBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('systemBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('technologyBadgeForm');
+      g.style.display = 'none';
+
+  let h = document.getElementById('vendorBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
     } else {
-        y.style.display = 'inline';
+        h.style.display = 'inline';
     }
   }
 
-  //HANDLE PROVIDERS FORM
-  if (selText == "Providers")
-  {
-     let x = document.getElementById('patientBadgeForm');
-      x.style.display = 'none';
-
-      let z = document.getElementById('vendorBadgeForm');
-      z.style.display = 'none';
-
-      let y = document.getElementById('providersBadgeForm');
-    if (y.style.display === 'none') {
-        y.style.display = 'inline';
-    } else {
-        y.style.display = 'inline';
-    }
-  }
 });
 
 </script>
