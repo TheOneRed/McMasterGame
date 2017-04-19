@@ -3,15 +3,15 @@ let mongoose = require('mongoose');
 let quiz = require('../models/quiz');
 let answer = require('../models/answer');
 
-module.exports.DisplayQuizs = (req, res)  => {
-    quiz.find((err, quizs) => {
+module.exports.DisplayQuizes = (req, res)  => {
+    quiz.find((err, quizes) => {
         if (err) {
             return console.error(err);
         } else {
-            res.render('content/quizs', { 
-                title: 'Quizs',
+            res.render('content/quizes', { 
+                title: 'Quizes',
                 quizName: req.body.quizName,
-                quizs: quizs,
+                quizes: quizes,
                 username: req.user ? req.user.username : '',                     
                 user_type: req.user ? req.user.user_type : ''});
         }
@@ -109,7 +109,7 @@ module.exports.DisplayAnswer = (req, res)  => {
             console.error(err);
             res.end(error);
         } else if (outAnswer == null) {
-            res.redirect('/quizs');
+            res.redirect('/quizes');
         } else {
             quiz.findById(id, (err, outQuiz) => {
                 if (err) {

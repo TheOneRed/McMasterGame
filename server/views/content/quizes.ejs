@@ -9,13 +9,13 @@
                 <th></th>
                 <th></th>
               </tr>
-              <% for (let count = 0; count < quizs.length; count++) { %>
+              <% for (let count = 0; count < quizes.length; count++) { %>
                 <tr>
-                  <td> <%=quizs[count].name %>  </td>
-                  <td> <%=quizs[count].user_name %>  </td>
+                  <td> <%=quizes[count].name %>  </td>
+                  <td> <%=quizes[count].user_name %>  </td>
 
-                  <td> <a href="/do/<%=quizs[count]._id %>" role="button"> Do </a> </td>
-                  <td> <a href="/answer/<%=quizs[count]._id %>" role="button"> Answers </a> </td>
+                  <td> <a href="/do/<%=quizes[count]._id %>" role="button"> Do </a> </td>
+                  <td> <a href="/answer/<%=quizes[count]._id %>" role="button"> Answers </a> </td>
                 </tr>
               <% } %>
             </table>

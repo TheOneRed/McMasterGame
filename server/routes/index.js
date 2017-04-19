@@ -70,8 +70,8 @@ router.get('/deletequest/:id', userController.RequireAuth, (req, res, next) => {
 
 //
 //
-router.get('/quizs', (req, res, next) => {
-    quizController.DisplayQuizs(req, res);
+router.get('/quizes', (req, res, next) => {
+    quizController.DisplayQuizes(req, res);
   }
 );
 
