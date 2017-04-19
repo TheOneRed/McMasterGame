@@ -70,18 +70,18 @@ router.get('/deletequest/:id', userController.RequireAuth, (req, res, next) => {
 
 //
 //
-router.get('/surveys', (req, res, next) => {
-    quizController.DisplaySurveys(req, res);
+router.get('/quizs', (req, res, next) => {
+    quizController.DisplayQuizs(req, res);
   }
 );
 
 router.get('/do/:id', (req, res, next) => {
-    quizController.DisplaySurvey(req, res);
+    quizController.DisplayQuiz(req, res);
   }
 );
 
 router.post('/do/:id', (req, res, next) => {
-    quizController.ProcessSurvey(req, res);
+    quizController.ProcessQuiz(req, res);
   }
 );
 

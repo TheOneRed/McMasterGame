@@ -1,43 +1,43 @@
 let mongoose = require('mongoose');
 
-let survey = require('../models/survey');
+let quiz = require('../models/quiz');
 let answer = require('../models/answer');
 
-module.exports.DisplaySurveys = (req, res)  => {
-    survey.find((err, surveys) => {
+module.exports.DisplayQuizs = (req, res)  => {
+    quiz.find((err, quizs) => {
         if (err) {
             return console.error(err);
         } else {
-            res.render('content/surveys', { 
-                title: 'Surveys',
-                surveyName: req.body.surveyName,
-                surveys: surveys,
+            res.render('content/quizs', { 
+                title: 'Quizs',
+                quizName: req.body.quizName,
+                quizs: quizs,
                 username: req.user ? req.user.username : '',                     
                 user_type: req.user ? req.user.user_type : ''});
         }
     });
 }
 
-module.exports.DisplaySurvey = (req, res)  => {
+module.exports.DisplayQuiz = (req, res)  => {
     let id = req.params.id;
 
-    survey.findById(id, (err, outSurvey) => {
+    quiz.findById(id, (err, outQuiz) => {
         if (err) {
             console.error(err);
             res.end(error);
         } else {
             let sess = req.session;
-            sess.survey = outSurvey
-            res.render('content/dosurvey', {
-                title: 'Survey ' + outSurvey.name,
-                survey: outSurvey,
+            sess.quiz = outQuiz
+            res.render('content/doquiz', {
+                title: 'Quiz ' + outQuiz.name,
+                quiz: outQuiz,
                 username: req.user ? req.user.username : '',                     
                 user_type: req.user ? req.user.user_type : ''});
         }
     });
 }
 
-module.exports.ProcessSurvey = (req, res)  => {
+module.exports.ProcessQuiz = (req, res)  => {
     let sess = req.session;
     let id = req.params.id;
 
@@ -52,16 +52,16 @@ module.exports.ProcessSurvey = (req, res)  => {
                 "questions": [] 
             });
 
-            for (let i = 0; i < sess.survey.questions.length; i++){
+            for (let i = 0; i < sess.quiz.questions.length; i++){
                 newAnswer.questions.push({
-                    "category": sess.survey.questions[i].category,
+                    "category": sess.quiz.questions[i].category,
                     "answers": []
                 })
 
-                if (sess.survey.questions[i].category == "mc"){
+                if (sess.quiz.questions[i].category == "mc"){
                     newAnswer.questions[i].answers = [0, 0, 0, 0];
                     newAnswer.questions[i].answers[req.body['q' + i]]++
-                } else if (sess.survey.questions[i].category == "tf"){
+                } else if (sess.quiz.questions[i].category == "tf"){
                     newAnswer.questions[i].answers = [0, 0];
                     newAnswer.questions[i].answers[req.body['q' + i]]++
                 }
@@ -79,12 +79,12 @@ module.exports.ProcessSurvey = (req, res)  => {
             });
         } else {
             outAnswer.answered++;
-            for (let i = 0; i < sess.survey.questions.length; i++){
+            for (let i = 0; i < sess.quiz.questions.length; i++){
                 let rb = req.body['q' + i];
 
-                if (sess.survey.questions[i].category == "mc"){
+                if (sess.quiz.questions[i].category == "mc"){
                     outAnswer.questions[i].answers[rb]++
-                } else if (sess.survey.questions[i].category == "tf"){
+                } else if (sess.quiz.questions[i].category == "tf"){
                     outAnswer.questions[i].answers[rb]++
                 }
             }
@@ -109,17 +109,17 @@ module.exports.DisplayAnswer = (req, res)  => {
             console.error(err);
             res.end(error);
         } else if (outAnswer == null) {
-            res.redirect('/surveys');
+            res.redirect('/quizs');
         } else {
-            survey.findById(id, (err, outSurvey) => {
+            quiz.findById(id, (err, outQuiz) => {
                 if (err) {
                     console.error(err);
                     res.end(error);
                 } else {
                     res.render('content/answerDisplay', {
-                        title: 'Answer-' + outSurvey.name,
+                        title: 'Answer-' + outQuiz.name,
                         answer: outAnswer,
-                        survey: outSurvey,
+                        quiz: outQuiz,
                         username: req.user ? req.user.username : '',                     
                 user_type: req.user ? req.user.user_type : ''});
                 }
@@ -130,7 +130,7 @@ module.exports.DisplayAnswer = (req, res)  => {
 
 module.exports.DisplayCreateQuiz = (req, res)  => {
     let sess = req.session;
-    sess.survey = new survey({
+    sess.quiz = new quiz({
         "user_id":  req.user._id,
         "user_name":  req.user.username,
         "name": '',
@@ -138,8 +138,8 @@ module.exports.DisplayCreateQuiz = (req, res)  => {
     });
 
     res.render('content/createquiz', { 
-        title: 'Create Survey',
-        survey: sess.survey,
+        title: 'Create Quiz',
+        quiz: sess.quiz,
         username: req.user ? req.user.username : '',                     
                 user_type: req.user ? req.user.user_type : ''});
 }
@@ -147,31 +147,31 @@ module.exports.DisplayCreateQuiz = (req, res)  => {
 module.exports.ProcessCreateQuiz = (req, res)  => {
     let sess = req.session;
 
-    if (sess.survey == null){
+    if (sess.quiz == null){
         res.redirect('/createquiz');
     } else {
-        sess.survey.name = req.body['surveyName'];
+        sess.quiz.name = req.body['quizName'];
         
-        //Updating Survey in Session
-        for (let i = 0; i < sess.survey.questions.length; i++){
-            sess.survey.questions[i].question = req.body['q' + i];
+        //Updating Quiz in Session
+        for (let i = 0; i < sess.quiz.questions.length; i++){
+            sess.quiz.questions[i].question = req.body['q' + i];
 
-            if ( sess.survey.questions[i].category == 'mc'){
-                sess.survey.questions[i].options[0] = req.body['q' + i + 'o1']
-                sess.survey.questions[i].options[1] = req.body['q' + i + 'o2']
-                sess.survey.questions[i].options[2] = req.body['q' + i + 'o3']
-                sess.survey.questions[i].options[3] = req.body['q' + i + 'o4']
+            if ( sess.quiz.questions[i].category == 'mc'){
+                sess.quiz.questions[i].options[0] = req.body['q' + i + 'o1']
+                sess.quiz.questions[i].options[1] = req.body['q' + i + 'o2']
+                sess.quiz.questions[i].options[2] = req.body['q' + i + 'o3']
+                sess.quiz.questions[i].options[3] = req.body['q' + i + 'o4']
             }
         }
 
         if (req.body.submitbutton == "Create"){
-            if (sess.survey.questions.length > 0){
-                survey.create(sess.survey, (err) => {
+            if (sess.quiz.questions.length > 0){
+                quiz.create(sess.quiz, (err) => {
                     if (err) {
                         console.error(err);
                         res.end(error);
                     } else {
-                        sess.survey = null;
+                        sess.quiz = null;
                         res.redirect('/');
                     }
                 });
@@ -179,29 +179,29 @@ module.exports.ProcessCreateQuiz = (req, res)  => {
 
             }
         } else {
-            //Adding Questions to Survey
+            //Adding Questions to Quiz
             if (req.body.submitbutton == "Multiple Choice"){
-                sess.survey.questions.push({
+                sess.quiz.questions.push({
                     "category":  'mc',
                     "question": '',
                     "options": ['', '', '', '']
                 });
             } else if (req.body.submitbutton == "True False"){
-                sess.survey.questions.push({
+                sess.quiz.questions.push({
                     "category":  'tf',
                     "question": '',
                     "options": ['True', 'False']
                 });
             }
 
-            //Remove Questions from the Survey
+            //Remove Questions from the Quiz
             if (req.body.submitbutton == "Remove Last"){
-                sess.survey.questions.pop();
+                sess.quiz.questions.pop();
             }
 
             res.render('content/createquiz', { 
-                title: 'Create Survey',
-                survey: sess.survey,
+                title: 'Create Quiz',
+                quiz: sess.quiz,
                 username: req.user ? req.user.username : '',                     
                 user_type: req.user ? req.user.user_type : ''});
         }

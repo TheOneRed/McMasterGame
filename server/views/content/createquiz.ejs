@@ -3,17 +3,17 @@
           <div class="col-md-2"></div>
           <div class="col-md-8">
             <form method="post">
-              Survey name: <input type="text" name="surveyName" value="<%= survey.name %>"><br>              
+              Survey name: <input type="text" name="quizName" value="<%= quiz.name %>"><br>              
 
-              <% for (let count = 0; count < survey.questions.length; count++) { %>
+              <% for (let count = 0; count < quiz.questions.length; count++) { %>
                 <br>                
-                Question <%= count +1  %>: <input type="text" name="q<%= count %>" value="<%= survey.questions[count].question %>"><br>
-                Option 1: <input type="text" name="q<%= count %>o1" value="<%= survey.questions[count].options[0] %>"><br>
-                Option 2: <input type="text" name="q<%= count %>o2" value="<%= survey.questions[count].options[1] %>"><br>
+                Question <%= count +1  %>: <input type="text" name="q<%= count %>" value="<%= quiz.questions[count].question %>"><br>
+                Option 1: <input type="text" name="q<%= count %>o1" value="<%= quiz.questions[count].options[0] %>"><br>
+                Option 2: <input type="text" name="q<%= count %>o2" value="<%= quiz.questions[count].options[1] %>"><br>
 
-                <% if(survey.questions[count].category == "mc") { %>
-                  Option 3: <input type="text" name="q<%= count %>o3" value="<%= survey.questions[count].options[2] %>"><br>
-                  Option 4: <input type="text" name="q<%= count %>o4" value="<%= survey.questions[count].options[3] %>"><br>
+                <% if(quiz.questions[count].category == "mc") { %>
+                  Option 3: <input type="text" name="q<%= count %>o3" value="<%= quiz.questions[count].options[2] %>"><br>
+                  Option 4: <input type="text" name="q<%= count %>o4" value="<%= quiz.questions[count].options[3] %>"><br>
                 <% } %>
               <% } %>
 
