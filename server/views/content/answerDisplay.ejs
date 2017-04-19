@@ -2,10 +2,11 @@
         <div class="panel-body">
           <div class="col-md-2"></div>
           <div class="col-md-8">
-            <%= quiz.name %>
-
-            Number of people that haved answered this quiz:<%= answer.answered %>
-
+            <h2> <%= quiz.name %> </h2>
+            <br/>
+            <h4> Stakehodler: <b> <%= quiz.stakeholder %> </b> </h4>
+            <h4> Badge: <b> <%= quiz.badge %> </b> </h4>
+            <br/>
             <% for (let count = 0; count < answer.questions.length; count++) { %>
               <br>
               Question <%= count +1  %>: <%= quiz.questions[count].question %><br>

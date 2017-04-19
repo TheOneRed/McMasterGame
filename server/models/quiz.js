@@ -1,19 +1,21 @@
 // require these modules for our user model
 let mongoose = require("mongoose");
 
-let SurveySchema = mongoose.Schema({
+let QuizSchema = mongoose.Schema({
   user_id: String,
   user_name: String,
   name: String,
-  questions: [{ 
-      category: String,
-      question: String,
-      options: [String],
-      answer: Number
-    }]
+  stakeholder: String,
+  badge: String,
+  questions: [{
+    category: String,
+    question: String,
+    options: [String],
+    answer: Number
+  }]
 },
-{
-  collection: "survey"
-});
+  {
+    collection: "quiz"
+  });
 
-module.exports = mongoose.model('Survey', SurveySchema);
+module.exports = mongoose.model('Quiz', QuizSchema);

@@ -34,18 +34,10 @@
          <!-- Main menu -->   
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li 
-                            <% if(title == "Home") { %> class="active" <% } %>
-                        ><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
-                        <li 
-                            <% if(title == "Profile") { %> class="active" <% } %>
-                        ><a href="/profile"><i class="fa fa-user-circle fa-lg"></i> Profile</a></li>
-                        <li 
-                            <% if(title == "Badge") { %> class="active" <% } %>
-                        ><a href="/badge"><i class="fa fa-get-pocket fa-lg"></i> Badge</a></li>
-                        <li 
-                            <% if(title == "Leaderboard") { %> class="active" <% } %>
-                        ><a href="/leader"><i class="fa fa-users fa-lg"></i> Leaderboard</a></li>
+                        <li <% if(title == "Home") { %> class="active" <% } %> ><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
+                        <li <% if(title == "Badge") { %> class="active" <% } %> ><a href="/badge"><i class="fa fa-get-pocket fa-lg"></i> Badge</a></li>
+                        <li <% if(title == "Leaderboard") { %> class="active" <% } %> ><a href="/leader"><i class="fa fa-users fa-lg"></i> Leaderboard</a></li>
+                        <li <% if(title == "Quest") { %> class="active" <% } %> ><a href="/quizes"><i class="fa fa-question-circle fa-lg"></i> Quest</a></li>
                         <% if(user_type=='Game Master') { %>
                             <li <% if(title == "Create") { %> class="active" <% } %> ><a href="/create"><i class="fa fa-plus-square-o fa-lg"></i> Create</a></li>
                             <li <% if(title == "Edit") { %> class="active" <% } %> ><a href="/edit"><i class="fa fa-plus-square-o fa-lg"></i> Edit</a></li>

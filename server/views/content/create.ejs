@@ -17,7 +17,8 @@
   <div class="well carousel-search hidden-phone">   
   <div class="container">
   <button onClick="stakeholderFunction()" type="button" class="btn btn-primary">Stakeholder</button>
-  <button onClick="questFunction()" type="button" class="btn btn-primary">Quest</button>
+  <button onClick="questFunction()" type="button" class="btn btn-primary">Badge</button>
+  <a class="btn btn-primary" href="/createquiz" role="button">  Create Quiz  </a>
 </div>
   </div>
 </form>
@@ -35,7 +36,7 @@
 
 <!-- NEW QUEST Start -->
 <form style="display:none" id="newQuestForm" method="post" action="/newquest">
-  <h4>New Quest</h4>
+  <h4>New Badge</h4>
   <div class="form-group">
     <input class="form-control" id="questName" name="questName">
   </div>
@@ -44,11 +45,7 @@
     <% for (let count = 0; count < stakeholders.length; count++) { %>
       <option value="<%= stakeholders[count]._id %>"><%= stakeholders[count].name %></option>
     <% } %>
-  </select>
-  <div class="form-group">
-    </br>
-    <input type="file" name="badgeImage" accept="image/*">
-  </div>
+  </select>  
   </br></br>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>

@@ -3,27 +3,47 @@
           <div class="col-md-2"></div>
           <div class="col-md-8">
             <form method="post">
-              Survey name: <input type="text" name="quizName" value="<%= quiz.name %>"><br>              
-
+              <h2> Quiz name: </h2>
+              <br/>
+              <input class="form-control" type="text" name="quizName" value="<%= quiz.name %>"><br>              
+              <br/>
               <% for (let count = 0; count < quiz.questions.length; count++) { %>
                 <br>                
-                Question <%= count +1  %>: <input type="text" name="q<%= count %>" value="<%= quiz.questions[count].question %>"><br>
-                Option 1: <input type="text" name="q<%= count %>o1" value="<%= quiz.questions[count].options[0] %>"><br>
-                Option 2: <input type="text" name="q<%= count %>o2" value="<%= quiz.questions[count].options[1] %>"><br>
+                <h4>Question <%= count +1  %>: </h4> <input class="form-control" type="text" name="q<%= count %>" value="<%= quiz.questions[count].question %>"><br>
+                <h5>Option 1:</h5>
+                <input class="form-control" type="text" name="q<%= count %>o1" value="<%= quiz.questions[count].options[0] %>"><br>
+                <h5>Option 2: </h5>
+                <input class="form-control" type="text" name="q<%= count %>o2" value="<%= quiz.questions[count].options[1] %>"><br>
 
                 <% if(quiz.questions[count].category == "mc") { %>
-                  Option 3: <input type="text" name="q<%= count %>o3" value="<%= quiz.questions[count].options[2] %>"><br>
-                  Option 4: <input type="text" name="q<%= count %>o4" value="<%= quiz.questions[count].options[3] %>"><br>
+                  <h5> Option 3: </h5> <input class="form-control" type="text" name="q<%= count %>o3" value="<%= quiz.questions[count].options[2] %>"><br>
+                  <h5> Option 4: </h5> <input class="form-control" type="text" name="q<%= count %>o4" value="<%= quiz.questions[count].options[3] %>"><br>
                 <% } %>
+                <hr>
               <% } %>
-
-              Add question
-              <input type="submit" name="submitbutton" value="Multiple Choice">
-              <input type="submit" name="submitbutton" value="True False">
-              <input type="submit" name="submitbutton" value="Remove Last">
-
-              <br>
-              <input type="submit" name="submitbutton" value="Create">
+              <br/>
+              <h3>Add a question </h3>
+              <br/>
+              <input class="btn btn-default" type="submit" name="submitbutton" value="Multiple Choice">
+              <input class="btn btn-default" type="submit" name="submitbutton" value="True False">
+              <input class="btn btn-default" type="submit" name="submitbutton" value="Remove Last">
+              <br/>
+              <br/>
+              <select name="stakeholders" class="form-control">
+                <option value="NULL"> Select a Stakeholder </option>
+                <% for (let count = 0; count < stakeholders.length; count++) { %>
+                  <option value="<%= stakeholders[count].name %>"><%= stakeholders[count].name %></option>
+                <% } %>
+              </select>  
+              <br/>
+              <select name="badges" class="form-control">
+                <option value="NULL"> Select a Badge </option>
+                <% for (let count = 0; count < badges.length; count++) { %>
+                  <option value="<%= badges[count].name %>"><%= badges[count].name %></option>
+                <% } %>
+              </select>  
+              <br/>
+              <input class="btn btn-success" type="submit" name="submitbutton" value="Create">
             </form>
           </div>
         </div>

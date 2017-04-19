@@ -3,14 +3,14 @@
           <div class="col-md-2"></div>
           <div class="col-md-8">
             <form method="post">
-              <%= quiz.name %>         
+              <h2> <%= quiz.name %>   </h2>      
 
               <% for (let count = 0; count < quiz.questions.length; count++) { %>
                 <br>                
-                Question <%= count +1  %>: <%= quiz.questions[count].question %><br>
+                <h4> Question <%= count +1  %>: <%= quiz.questions[count].question %><br> </h4>
                 
                 <% if(quiz.questions[count].category == "mc" || quiz.questions[count].category == "tf") { %>
-                  <input type="radio" name="q<%= count %>" value="0"> <%= quiz.questions[count].options[0] %> <br>
+                  <input type="radio" name="q<%= count %>" value="0"> <%= quiz.questions[count].options[0] %><br>
                   <input type="radio" name="q<%= count %>" value="1"> <%= quiz.questions[count].options[1] %> <br>
                 <% } %>
 
@@ -23,8 +23,9 @@
                   <input type="text" name="q<%= count %>"><br>
                 <% } %>
               <% } %>
-
-              <input type="submit" value="Submit">
+              <br/>
+              <br/>
+              <input class="btn btn-success" type="submit" value="Submit">
             </form>
           </div>
         </div>
