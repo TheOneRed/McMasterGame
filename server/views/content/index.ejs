@@ -18,11 +18,14 @@
     <div class="btn-group">
       <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a Stakeholder <span class="caret"></span></a>
       <ul class="dropdown-menu">
+        <li><a href="#">Guideline Implementors</a></li>
+        <li><a href="#">Organizations</a></li>
         <li><a href="#">Patients</a></li>
-        <li><a href="#">Vendors</a></li>
         <li><a href="#">Providers</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Other</a></li>
+        <li><a href="#">Researchers & Academics</a></li>
+        <li><a href="#">System Managers</a></li>
+        <li><a href="#">Technology Implementers</a></li>
+        <li><a href="#">Vendors</a></li>
       </ul>
       <span id="spanTest" style="display: none">
       <button type="button" id="btnTest" class="btn btn-primary">TEST</button>
@@ -31,7 +34,49 @@
   </div>
 </form>
 <!-- Stakeholder box End -->
-          
+
+<!-- GUIDELINE BADGES Start -->
+<form style="display:none" id="guidelineBadgeForm">
+  <h4>Select A Badge</h4>
+  <div class="well carousel-search hidden-phone">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a Guideline Implementors BADGE <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Guidelines</a></li>
+      </ul>
+      <button type="button" id="btnTest" class="btn btn-primary">Start Guideline Implementors Badge</button>
+
+  </div>
+  </div>
+</form>
+<!-- GUIDELINE BADGES End -->
+
+<!-- ORAGIZATIONS BADGES Start -->
+<form style="display:none" id="organizationBadgeForm">
+  <h4>Select A Badge</h4>
+  <div class="well carousel-search hidden-phone">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a Organizations BADGE <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Clinics</a></li>
+        <li><a href="#">CPOE, HIS, EHR, etc</a></li>
+        <li><a href="#">Cyber Security</a></li>
+        <li><a href="#">Homecare</a></li>
+        <li><a href="#">Hospitals</a></li>
+        <li><a href="#">Innovation Procurement</a></li>
+        <li><a href="#">Interoperability</a></li>
+        <li><a href="#">Long Term Care</a></li>
+        <li><a href="#">Privacy, Security & Confidentiality</a></li>
+        <li><a href="#">Policies</a></li>
+        <li><a href="#">Tech Implementation</a></li>
+      </ul>
+      <button type="button" id="btnTest" class="btn btn-primary">Start Organizations Badge</button>
+
+  </div>
+  </div>
+</form>
+<!-- ORGANIZATIONS BADGES End -->
 
 <!-- PATIENT BADGES Start -->
 <form style="display:none" id="patientBadgeForm">
@@ -40,11 +85,14 @@
     <div class="btn-group">
       <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a Patient BADGE <span class="caret"></span></a>
       <ul class="dropdown-menu">
+        <li><a href="#">Coordinated Care</a></li>
         <li><a href="#">Empowerment</a></li>
-        <li><a href="#">Safety</a></li>
-        <li><a href="#">Journey</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Other</a></li>
+        <li><a href="#">Mobile Apps</a></li>
+        <li><a href="#">Patient Experience</a></li>
+        <li><a href="#">Patient Journey</a></li>
+        <li><a href="#">Patient Outcomes</a></li>
+        <li><a href="#">Patient Safety</a></li>
+        <li><a href="#">User Experience</a></li>
       </ul>
       <button type="button" id="btnTest" class="btn btn-primary">Start Patient Badge</button>
 
@@ -53,26 +101,6 @@
 </form>
 <!-- PATIENT BADGES End -->
 
-<!-- VENDOR BADGES Start -->
-<form style="display:none" id="vendorBadgeForm">
-  <h4>Select A Badge</h4>
-  <div class="well carousel-search hidden-phone">
-    <div class="btn-group">
-      <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a Vendor BADGE <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="#">User Interface</a></li>
-        <li><a href="#">Mobile</a></li>
-        <li><a href="#">Applications</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Other</a></li>
-      </ul>
-      <button type="button" id="btnTest" class="btn btn-primary">Start Vendor Badge</button>
-
-  </div>
-  </div>
-</form>
-<!-- VENDOR BADGES End -->
-
 <!-- PROVIDERS BADGES Start -->
 <form style="display:none" id="providersBadgeForm">
   <h4>Select A Badge</h4>
@@ -80,18 +108,88 @@
     <div class="btn-group">
       <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a provider BADGE <span class="caret"></span></a>
       <ul class="dropdown-menu">
-        <li><a href="#">Team Based Care</a></li>
-        <li><a href="#">Clinical Workflow</a></li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">CDSS</a></li>
+        <li><a href="#">Clinical Workflow & Infoflow</a></li>
+        <li><a href="#">Change Management</a></li>
+        <li><a href="#">EMRs, Disease Registries</a></li>
+        <li><a href="#">Evaluation</a></li>
         <li><a href="#">Models of Care</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Other</a></li>
+        <li><a href="#">Resource Allocation</a></li>
+        <li><a href="#">Team Based Care</a></li>
       </ul>
       <button type="button" id="btnTest" class="btn btn-primary">Start provider Badge</button>
-
   </div>
   </div>
 </form>
 <!-- PROVIDERS BADGES End -->
+
+<!-- RESEARCH BADGES Start -->
+<form style="display:none" id="researchBadgeForm">
+  <h4>Select A Badge</h4>
+  <div class="well carousel-search hidden-phone">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a Researchers & Academics BADGE <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Resource Allocation</a></li>
+      </ul>
+      <button type="button" id="btnTest" class="btn btn-primary">Start Researchers & Academics Badge</button>
+  </div>
+  </div>
+</form>
+<!-- RESEARCH BADGES End -->
+
+<!-- SYSTEM BADGES Start -->
+<form style="display:none" id="systemBadgeForm">
+  <h4>Select A Badge</h4>
+  <div class="well carousel-search hidden-phone">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a System Managers BADGE <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Policies</a></li>
+        <li><a href="#">Resource Allocation</a></li>
+      </ul>
+      <button type="button" id="btnTest" class="btn btn-primary">Start System Managers Badge</button>
+  </div>
+  </div>
+</form>
+<!-- SYSTEM BADGES End -->
+
+<!-- TECHNOLOGY BADGES Start -->
+<form style="display:none" id="technologyBadgeForm">
+  <h4>Select A Badge</h4>
+  <div class="well carousel-search hidden-phone">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a Technology Implementers BADGE <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Life Cycle Management</a></li>
+        <li><a href="#">Resource Allocation</a></li>
+      </ul>
+      <button type="button" id="btnTest" class="btn btn-primary">Start Technology Implementers Badge</button>
+  </div>
+  </div>
+</form>
+<!-- TECHNOLOGY BADGES End -->
+
+<!-- VENDOR BADGES Start -->
+<form style="display:none" id="vendorBadgeForm">
+  <h4>Select A Badge</h4>
+  <div class="well carousel-search hidden-phone">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a Vendor BADGE <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Information Exchange</a></li>
+        <li><a href="#">Life Cycle Management</a></li>
+        <li><a href="#">Procurement</a></li>
+        <li><a href="#">User Interface</a></li>
+      </ul>
+      <button type="button" id="btnTest" class="btn btn-primary">Start Vendor Badge</button>
+
+  </div>
+  </div>
+</form>
+<!-- VENDOR BADGES End -->
 
 
 </div>
@@ -102,55 +200,263 @@
   let selText = $(this).text();
   $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
   //badge element visible
+  
+   //HANDLE GUIDELINE FORM
+  if (selText == "Guideline Implementors")
+  {
+     let a = document.getElementById('organizationBadgeForm');
+      a.style.display = 'none';
+
+      let b = document.getElementById('patientBadgeForm');
+      b.style.display = 'none';
+
+      let c = document.getElementById('providersBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('researchBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('systemBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('technologyBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('vendorBadgeForm');
+      g.style.display = 'none';
+
+      let h = document.getElementById('guidelineBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
+    } else {
+        h.style.display = 'inline';
+    }
+  }
+
+   //HANDLE ORGANIZATION FORM
+  if (selText == "Organizations")
+  {
+     let a = document.getElementById('guidelineBadgeForm');
+      a.style.display = 'none';
+
+      let b = document.getElementById('patientBadgeForm');
+      b.style.display = 'none';
+
+      let c = document.getElementById('providersBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('researchBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('systemBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('technologyBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('vendorBadgeForm');
+      g.style.display = 'none';
+
+      let h = document.getElementById('organizationBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
+    } else {
+        h.style.display = 'inline';
+    }
+  }
+
+   //HANDLE PROVIDERS FORM
+  if(selText == "Providers")
+  {
+      let a = document.getElementById('guidelineBadgeForm');
+      a.style.display = 'none';
+
+      let b = document.getElementById('organizationBadgeForm');
+      b.style.display = 'none';
+
+      let c = document.getElementById('patientBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('researchBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('systemBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('technologyBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('vendorBadgeForm');
+      g.style.display = 'none';
+
+  let h = document.getElementById('providersBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
+    } else {
+        h.style.display = 'inline';
+    }
+  }
+
+  //HANDLE PATIENT FORM
   if(selText == "Patients")
   {
-      let y = document.getElementById('vendorBadgeForm');
-      y.style.display = 'none';
+      let a = document.getElementById('guidelineBadgeForm');
+      a.style.display = 'none';
 
-      let z = document.getElementById('providersBadgeForm');
-      z.style.display = 'none';
+      let b = document.getElementById('organizationBadgeForm');
+      b.style.display = 'none';
 
-  let x = document.getElementById('patientBadgeForm');
-    if (x.style.display === 'none') {
-        x.style.display = 'inline';
+      let c = document.getElementById('providersBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('researchBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('systemBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('technologyBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('vendorBadgeForm');
+      g.style.display = 'none';
+
+  let h = document.getElementById('patientBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
     } else {
-        x.style.display = 'inline';
+        h.style.display = 'inline';
+    }
+  }
+
+   //HANDLE RESEARCH FORM
+  if(selText == "Researchers & Academics")
+  {
+      let a = document.getElementById('guidelineBadgeForm');
+      a.style.display = 'none';
+
+      let b = document.getElementById('organizationBadgeForm');
+      b.style.display = 'none';
+
+      let c = document.getElementById('patientBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('providersBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('systemBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('technologyBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('vendorBadgeForm');
+      g.style.display = 'none';
+
+  let h = document.getElementById('researchBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
+    } else {
+        h.style.display = 'inline';
+    }
+  }
+
+    //HANDLE SYSTEM FORM
+  if(selText == "System Managers")
+  {
+      let a = document.getElementById('guidelineBadgeForm');
+      a.style.display = 'none';
+
+      let b = document.getElementById('organizationBadgeForm');
+      b.style.display = 'none';
+
+      let c = document.getElementById('patientBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('providersBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('researchBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('technologyBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('vendorBadgeForm');
+      g.style.display = 'none';
+
+  let h = document.getElementById('systemBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
+    } else {
+        h.style.display = 'inline';
+    }
+  }
+
+      //HANDLE TECHNOLOGY FORM
+  if(selText == "Technology Implementers")
+  {
+      let a = document.getElementById('guidelineBadgeForm');
+      a.style.display = 'none';
+
+      let b = document.getElementById('organizationBadgeForm');
+      b.style.display = 'none';
+
+      let c = document.getElementById('patientBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('providersBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('researchBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('systemBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('vendorBadgeForm');
+      g.style.display = 'none';
+
+  let h = document.getElementById('technologyBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
+    } else {
+        h.style.display = 'inline';
     }
   }
 
   //HANDLE VENDOR FORM
   if (selText == "Vendors")
   {
-     let x = document.getElementById('patientBadgeForm');
-      x.style.display = 'none';
+      let a = document.getElementById('guidelineBadgeForm');
+      a.style.display = 'none';
 
-      let z = document.getElementById('providersBadgeForm');
-      z.style.display = 'none';
+      let b = document.getElementById('organizationBadgeForm');
+      b.style.display = 'none';
 
-      let y = document.getElementById('vendorBadgeForm');
-    if (y.style.display === 'none') {
-        y.style.display = 'inline';
+      let c = document.getElementById('patientBadgeForm');
+      c.style.display = 'none';
+
+      let d = document.getElementById('providersBadgeForm');
+      d.style.display = 'none';
+
+      let e = document.getElementById('researchBadgeForm');
+      e.style.display = 'none';
+
+      let f = document.getElementById('systemBadgeForm');
+      f.style.display = 'none';
+
+      let g = document.getElementById('technologyBadgeForm');
+      g.style.display = 'none';
+
+  let h = document.getElementById('vendorBadgeForm');
+    if (h.style.display === 'none') {
+        h.style.display = 'inline';
     } else {
-        y.style.display = 'inline';
+        h.style.display = 'inline';
     }
   }
 
-  //HANDLE PROVIDERS FORM
-  if (selText == "Providers")
-  {
-     let x = document.getElementById('patientBadgeForm');
-      x.style.display = 'none';
-
-      let z = document.getElementById('vendorBadgeForm');
-      z.style.display = 'none';
-
-      let y = document.getElementById('providersBadgeForm');
-    if (y.style.display === 'none') {
-        y.style.display = 'inline';
-    } else {
-        y.style.display = 'inline';
-    }
-  }
 });
 
 </script>
