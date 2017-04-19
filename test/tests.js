@@ -28,10 +28,11 @@ describe('Unit tests for McMasterGame Project', function () {
         assert.equal(verifyTestFramework(2, 3), 5);
     });
 
-    // =========================== RELEASE 1.0 TESTING ==================================
+    // =========================== RELEASE 1.2 TESTING ==================================
 
     //testing / controller
     it('should respond with an html file when root is requested', function (done) {
+        console.log("\nRELEASE 1.2 TESTING STARTS\n");
         request(server)
             .get('/')
             .expect(200)
@@ -85,5 +86,76 @@ describe('Unit tests for McMasterGame Project', function () {
             });
     });
 
-    // =========================== RELEASE 1.0 TESTING ENDS ===============================
+    // =========================== RELEASE 1.2 TESTING ENDS ===============================
+
+    // =========================== RELEASE 2.0 TESTING ====================================
+
+    //testing /badge controller
+    it('should respond with an html file when /badge is requested', function (done) {
+        console.log("\nRELEASE 2.0 TESTING STARTS\n");
+        request(server)
+            .get('/badge')
+            .expect(200)
+            .end(function (err, response) {
+                assert.equal(response.header['content-type'], 'text/html; charset=utf-8');
+                done();
+            });
+    });
+
+    //testing /leader controller
+    it('should respond with an html file when /leader is requested', function (done) {
+        request(server)
+            .get('/leader')
+            .expect(200)
+            .end(function (err, response) {
+                assert.equal(response.header['content-type'], 'text/html; charset=utf-8');
+                done();
+            });
+    });
+
+    // testing /quizes controller
+    it('should respond with an html file when /quizes is requested', function (done) {
+        request(server)
+            .get('/quizes')
+            .expect(200)
+            .end(function (err, response) {
+                assert.equal(response.header['content-type'], 'text/html; charset=utf-8');
+                done();
+            });
+    });
+
+    // testing /create controller
+    it('should respond with an html file when /create is requested', function (done) {
+        request(server)
+            .get('/create')
+            .expect(200)
+            .end(function (err, response) {
+                assert.equal(response.header['content-type'], 'text/html; charset=utf-8');
+                done();
+            });
+    });
+
+    // testing /edit controller
+    it('should respond with an html file when /edit is requested', function (done) {
+        request(server)
+            .get('/edit')
+            .expect(200)
+            .end(function (err, response) {
+                assert.equal(response.header['content-type'], 'text/html; charset=utf-8');
+                done();
+            });
+    });
+
+    // testing error-processing controller
+    it('should send 302 when a request is made to non-existing quiz', function (done) {
+        request(server)
+            .get('/answer/58f73b3e3d5ed229a479db4a')
+            .expect(302)
+            .end(function (err, response) {
+                assert.equal(response.header['content-type'], 'text/plain; charset=utf-8');
+                done();
+            });
+    });  
+
+    // =========================== RELEASE 2.0 TESTING ENDS ===============================
 });
