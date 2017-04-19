@@ -11,6 +11,7 @@ let router = express.Router();
 
 let indexController = require('../controllers/index');
 let userController = require('../controllers/user');
+let quizController = require('../controllers/quiz');
 
 /* GET home page. */
 router.get('/', userController.RequireAuth, (req, res, next) => {
@@ -66,5 +67,39 @@ router.get('/removequest/:id', userController.RequireAuth, (req, res, next) => {
 router.get('/deletequest/:id', userController.RequireAuth, (req, res, next) => {
     indexController.DeleteQuest(req, res);
 });
+
+//
+//
+router.get('/surveys', (req, res, next) => {
+    quizController.DisplaySurveys(req, res);
+  }
+);
+
+router.get('/do/:id', (req, res, next) => {
+    quizController.DisplaySurvey(req, res);
+  }
+);
+
+router.post('/do/:id', (req, res, next) => {
+    quizController.ProcessSurvey(req, res);
+  }
+);
+
+router.get('/answer/:id', (req, res, next) => {
+    quizController.DisplayAnswer(req, res);
+  }
+);
+
+router.get('/createquiz', userController.RequireAuth,  (req, res, next) => {
+    quizController.DisplayCreateQuiz(req, res);
+  }
+);
+
+router.post('/createquiz', userController.RequireAuth, (req, res, next) => {
+    quizController.ProcessCreateQuiz(req, res);
+  }
+);
+//
+//
 
 module.exports = router;

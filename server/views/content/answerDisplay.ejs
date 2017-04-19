@@ -1,0 +1,46 @@
+<% include ../partials/header.ejs %>
+        <div class="panel-body">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <%= survey.name %>
+
+            Number of people that haved answered this survey:<%= answer.answered %>
+
+            <% for (let count = 0; count < answer.questions.length; count++) { %>
+              <br>
+              Question <%= count +1  %>: <%= survey.questions[count].question %><br>
+
+              <table class="table table-hover">
+
+                  <% if(answer.questions[count].category == "sa") { %>
+                    <tr>
+                      <th>Answer</th>
+                    </tr>
+                  <% } else { %>
+                    <tr>
+                      <th>Option</th>
+                      <th>Answer</th>
+                    </tr>
+                  <% } %> 
+                
+                    
+                  <% if(answer.questions[count].category == "mc" || answer.questions[count].category == "tf") { %>
+                    <tr><td> <%= survey.questions[count].options[0] %> </td><td> <%= answer.questions[count].answers[0] %> </td></tr>
+                    <tr><td> <%= survey.questions[count].options[1] %> </td><td> <%= answer.questions[count].answers[1] %> </td></tr>
+                  <% } %>
+
+                  <% if(answer.questions[count].category == "mc") { %>
+                    <tr><td> <%= survey.questions[count].options[2] %> </td><td> <%= answer.questions[count].answers[2] %> </td></tr>
+                    <tr><td> <%= survey.questions[count].options[3] %> </td><td> <%= answer.questions[count].answers[3] %> </td></tr>
+                  <% } %>
+
+                  <% if(answer.questions[count].category == "sa") { %>
+                    <% for (let i = 0; i < answer.questions[count].answers.length; i++) { %>
+                      <tr><td> <%= answer.questions[count].answers[i] %> </td></tr>
+                    <% } %>
+                  <% } %>
+              </table>
+            <% } %>
+          </div>
+        </div>
+<% include ../partials/footer.ejs %> 

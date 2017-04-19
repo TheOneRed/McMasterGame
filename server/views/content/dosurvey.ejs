@@ -1,0 +1,31 @@
+<% include ../partials/header.ejs %>
+        <div class="panel-body">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <form method="post">
+              <%= survey.name %>         
+
+              <% for (let count = 0; count < survey.questions.length; count++) { %>
+                <br>                
+                Question <%= count +1  %>: <%= survey.questions[count].question %><br>
+                
+                <% if(survey.questions[count].category == "mc" || survey.questions[count].category == "tf") { %>
+                  <input type="radio" name="q<%= count %>" value="0"> <%= survey.questions[count].options[0] %> <br>
+                  <input type="radio" name="q<%= count %>" value="1"> <%= survey.questions[count].options[1] %> <br>
+                <% } %>
+
+                <% if(survey.questions[count].category == "mc") { %>
+                  <input type="radio" name="q<%= count %>" value="2"> <%= survey.questions[count].options[2] %> <br>
+                  <input type="radio" name="q<%= count %>" value="3"> <%= survey.questions[count].options[3] %> <br>
+                <% } %>
+
+                <% if(survey.questions[count].category == "sa") { %>
+                  <input type="text" name="q<%= count %>"><br>
+                <% } %>
+              <% } %>
+
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+<% include ../partials/footer.ejs %> 

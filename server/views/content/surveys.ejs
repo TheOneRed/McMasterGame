@@ -1,0 +1,24 @@
+<% include ../partials/header.ejs %>
+        <div class="panel-body">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <table class="table">
+              <tr>
+                <th>Name</th>
+                <th>User</th>
+                <th></th>
+                <th></th>
+              </tr>
+              <% for (let count = 0; count < surveys.length; count++) { %>
+                <tr>
+                  <td> <%=surveys[count].name %>  </td>
+                  <td> <%=surveys[count].user_name %>  </td>
+
+                  <td> <a href="/do/<%=surveys[count]._id %>" role="button"> Do </a> </td>
+                  <td> <a href="/answer/<%=surveys[count]._id %>" role="button"> Answers </a> </td>
+                </tr>
+              <% } %>
+            </table>
+          </div>
+        </div>
+<% include ../partials/footer.ejs %> 
