@@ -2,13 +2,13 @@
         <div class="panel-body">
           <div class="col-md-2"></div>
           <div class="col-md-8">
-            <%= survey.name %>
+            <%= quiz.name %>
 
-            Number of people that haved answered this survey:<%= answer.answered %>
+            Number of people that haved answered this quiz:<%= answer.answered %>
 
             <% for (let count = 0; count < answer.questions.length; count++) { %>
               <br>
-              Question <%= count +1  %>: <%= survey.questions[count].question %><br>
+              Question <%= count +1  %>: <%= quiz.questions[count].question %><br>
 
               <table class="table table-hover">
 
@@ -25,13 +25,13 @@
                 
                     
                   <% if(answer.questions[count].category == "mc" || answer.questions[count].category == "tf") { %>
-                    <tr><td> <%= survey.questions[count].options[0] %> </td><td> <%= answer.questions[count].answers[0] %> </td></tr>
-                    <tr><td> <%= survey.questions[count].options[1] %> </td><td> <%= answer.questions[count].answers[1] %> </td></tr>
+                    <tr><td> <%= quiz.questions[count].options[0] %> </td><td> <%= answer.questions[count].answers[0] %> </td></tr>
+                    <tr><td> <%= quiz.questions[count].options[1] %> </td><td> <%= answer.questions[count].answers[1] %> </td></tr>
                   <% } %>
 
                   <% if(answer.questions[count].category == "mc") { %>
-                    <tr><td> <%= survey.questions[count].options[2] %> </td><td> <%= answer.questions[count].answers[2] %> </td></tr>
-                    <tr><td> <%= survey.questions[count].options[3] %> </td><td> <%= answer.questions[count].answers[3] %> </td></tr>
+                    <tr><td> <%= quiz.questions[count].options[2] %> </td><td> <%= answer.questions[count].answers[2] %> </td></tr>
+                    <tr><td> <%= quiz.questions[count].options[3] %> </td><td> <%= answer.questions[count].answers[3] %> </td></tr>
                   <% } %>
 
                   <% if(answer.questions[count].category == "sa") { %>

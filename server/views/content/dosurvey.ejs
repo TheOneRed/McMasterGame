@@ -3,23 +3,23 @@
           <div class="col-md-2"></div>
           <div class="col-md-8">
             <form method="post">
-              <%= survey.name %>         
+              <%= quiz.name %>         
 
-              <% for (let count = 0; count < survey.questions.length; count++) { %>
+              <% for (let count = 0; count < quiz.questions.length; count++) { %>
                 <br>                
-                Question <%= count +1  %>: <%= survey.questions[count].question %><br>
+                Question <%= count +1  %>: <%= quiz.questions[count].question %><br>
                 
-                <% if(survey.questions[count].category == "mc" || survey.questions[count].category == "tf") { %>
-                  <input type="radio" name="q<%= count %>" value="0"> <%= survey.questions[count].options[0] %> <br>
-                  <input type="radio" name="q<%= count %>" value="1"> <%= survey.questions[count].options[1] %> <br>
+                <% if(quiz.questions[count].category == "mc" || quiz.questions[count].category == "tf") { %>
+                  <input type="radio" name="q<%= count %>" value="0"> <%= quiz.questions[count].options[0] %> <br>
+                  <input type="radio" name="q<%= count %>" value="1"> <%= quiz.questions[count].options[1] %> <br>
                 <% } %>
 
-                <% if(survey.questions[count].category == "mc") { %>
-                  <input type="radio" name="q<%= count %>" value="2"> <%= survey.questions[count].options[2] %> <br>
-                  <input type="radio" name="q<%= count %>" value="3"> <%= survey.questions[count].options[3] %> <br>
+                <% if(quiz.questions[count].category == "mc") { %>
+                  <input type="radio" name="q<%= count %>" value="2"> <%= quiz.questions[count].options[2] %> <br>
+                  <input type="radio" name="q<%= count %>" value="3"> <%= quiz.questions[count].options[3] %> <br>
                 <% } %>
 
-                <% if(survey.questions[count].category == "sa") { %>
+                <% if(quiz.questions[count].category == "sa") { %>
                   <input type="text" name="q<%= count %>"><br>
                 <% } %>
               <% } %>
