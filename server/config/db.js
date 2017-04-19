@@ -7,5 +7,5 @@
 
 // URI link for local development environment
 module.exports = {
-    "URI": "mongodb://localhost/games"
+    "URI": "mongodb://localhost/gamezz"
 };

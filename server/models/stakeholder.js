@@ -1,5 +1,5 @@
 /*
- *     Purpose: Quest model for db
+ *     Purpose: Stakeholder model for db
  *     Authors: McMaster Team
  *     Date: 2017-04-16
  *     Version: 1.0

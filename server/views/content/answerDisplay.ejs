@@ -1,3 +1,10 @@
+<!--
+        Purpose: Answers page for ejs engine render
+        Authors: McMaster Team
+        Date: 2017-04-16
+        Version: 1.0
+ -->
+
 <% include ../partials/header.ejs %>
         <div class="panel-body">
           <div class="col-md-2"></div>
@@ -10,9 +17,7 @@
             <% for (let count = 0; count < answer.questions.length; count++) { %>
               <br>
               Question <%= count +1  %>: <%= quiz.questions[count].question %><br>
-
               <table class="table table-hover">
-
                   <% if(answer.questions[count].category == "sa") { %>
                     <tr>
                       <th>Answer</th>

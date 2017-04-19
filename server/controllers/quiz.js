@@ -1,5 +1,12 @@
-let mongoose = require('mongoose');
+/*
+ *     Purpose: Quest controllers for the website
+ *     Authors: McMaster Team
+ *     Date: 2017-04-18
+ *     Version: 1.0
+ */
 
+// Import for db access
+let mongoose = require('mongoose');
 
 // Define the stakeholder model
 let StakeholderModel = require('../models/stakeholder');
@@ -17,6 +24,7 @@ let Play = PlayModel.Play; // alias for quest
 let quiz = require('../models/quiz');
 let answer = require('../models/answer');
 
+/* Quizes page controller */
 module.exports.DisplayQuizes = (req, res) => {
     quiz.find((err, quizes) => {
         if (err) {
@@ -33,6 +41,7 @@ module.exports.DisplayQuizes = (req, res) => {
     });
 }
 
+/* Quiz page controller */
 module.exports.DisplayQuiz = (req, res) => {
     let id = req.params.id;
 
@@ -53,6 +62,7 @@ module.exports.DisplayQuiz = (req, res) => {
     });
 }
 
+/* Quiz page processing controller */
 module.exports.ProcessQuiz = (req, res) => {
     let sess = req.session;
     let id = req.params.id;
@@ -70,7 +80,7 @@ module.exports.ProcessQuiz = (req, res) => {
                 "badge": sess.quiz.badge,
                 "questions": []
             });
-
+            // looping the questions
             for (let i = 0; i < sess.quiz.questions.length; i++) {
                 newAnswer.questions.push({
                     "category": sess.quiz.questions[i].category,
@@ -121,6 +131,7 @@ module.exports.ProcessQuiz = (req, res) => {
     });
 }
 
+/* Answers page controller */
 module.exports.DisplayAnswer = (req, res) => {
     let id = req.params.id;
 
@@ -149,6 +160,7 @@ module.exports.DisplayAnswer = (req, res) => {
     });
 }
 
+/* Create quiz controller */
 module.exports.DisplayCreateQuiz = (req, res) => {
     let sess = req.session;
     sess.quiz = new quiz({
@@ -182,6 +194,7 @@ module.exports.DisplayCreateQuiz = (req, res) => {
 
 }
 
+/* Create quiz processing controller */
 module.exports.ProcessCreateQuiz = (req, res) => {
     let sess = req.session;
     if (sess.quiz == null) {

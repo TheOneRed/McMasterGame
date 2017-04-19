@@ -9,6 +9,7 @@
 let express = require('express');
 let router = express.Router();
 
+// Import controllers
 let indexController = require('../controllers/index');
 let userController = require('../controllers/user');
 let quizController = require('../controllers/quiz');
@@ -78,38 +79,40 @@ router.get('/acceptStakeholder/:id', userController.RequireAuth, (req, res, next
     quizController.ProcessAcceptStakeholder(req, res);
 });
 
-//
-//
+/* GET Quizes page */
 router.get('/quizes', userController.RequireAuth, (req, res, next) => {
     quizController.DisplayQuizes(req, res);
 }
 );
 
+/* GET Quiz taking page */
 router.get('/do/:id', (req, res, next) => {
     quizController.DisplayQuiz(req, res);
 }
 );
 
+/* POST Quiz taking page */
 router.post('/do/:id', (req, res, next) => {
     quizController.ProcessQuiz(req, res);
 }
 );
 
+/* GET Answers page */
 router.get('/answer/:id', (req, res, next) => {
     quizController.DisplayAnswer(req, res);
 }
 );
 
+/* GET Create quiz page */
 router.get('/createquiz', userController.RequireAuth, (req, res, next) => {
     quizController.DisplayCreateQuiz(req, res);
 }
 );
 
+/* POST Create quiz page */
 router.post('/createquiz', userController.RequireAuth, (req, res, next) => {
     quizController.ProcessCreateQuiz(req, res);
 }
 );
-//
-//
 
 module.exports = router;

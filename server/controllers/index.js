@@ -110,7 +110,7 @@ module.exports.CreateQuest = (req, res) => {
                 res.end(error);
             }
         });
-
+        // assign badge to stakeholder
         let stakeholders_id = req.body.stakeholders;
         Stakeholder.findById(stakeholders_id, (err, stakeholder) => {
             if (err) {
@@ -188,7 +188,6 @@ module.exports.RemoveQuest = (req, res) => {
             if (index > -1) {
                 fondStakeholder.badges_ids.splice(index, 1);
             }
-
             Stakeholder.update({ _id: fondStakeholder._id }, fondStakeholder, (err) => {
                 if (err) {
                     console.error(err);
